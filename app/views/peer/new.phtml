@@ -1,0 +1,75 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+<div class="row">
+    <nav>
+        <ul class="pager">
+            <li class="previous"><?php echo $this->tag->linkTo(array("peer", "Voltar")) ?></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="page-header">
+    <h1>
+        Cadastrar Peer
+    </h1>
+</div>
+
+<?php echo $this->getContent(); ?>
+
+<?php
+    echo $this->tag->form(
+        array(
+            "peer/create",
+            "autocomplete" => "off",
+            "class" => "form-horizontal"
+        )
+    );
+?>
+
+<div class="form-group">
+    <label for="fieldTurmacodtur" class="col-sm-2 control-label">Código da turma :</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("turmacodtur", "type" => "number", "class" => "form-control", "id" => "fieldTurmacodtur")) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldDespee" class="col-sm-2 control-label">Descrição do peer :</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("despee", "size" => 30, "class" => "form-control", "id" => "fieldDespee")) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldDatcadpee" class="col-sm-2 control-label">Data cadastro do peer :</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("datcadpee", "type" => "date", "class" => "form-control", "id" => "fieldDatcadpee")) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldDasexepee" class="col-sm-2 control-label">Data de execução do peer : </label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("dasexepee", "type" => "date", "class" => "form-control", "id" => "fieldDasexepee")) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldDasfimpee" class="col-sm-2 control-label">Data do fim do peer : </label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("dasfimpee", "type" => "date", "class" => "form-control", "id" => "fieldDasfimpee")) ?>
+    </div>
+</div>
+
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <?php echo $this->tag->submitButton(array("Salvar", "class" => "btn btn-default")) ?>
+    </div>
+</div>
+
+<?php echo $this->tag->endForm(); ?>

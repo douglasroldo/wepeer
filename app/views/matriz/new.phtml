@@ -1,0 +1,61 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+<div class="row">
+    <nav>
+        <ul class="pager">
+            <li class="previous"><?php echo $this->tag->linkTo(array("matriz", "Voltar")) ?></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="page-header">
+    <h1>
+        Criar matriz
+    </h1>
+</div>
+
+<?php echo $this->getContent(); ?>
+
+<?php
+    echo $this->tag->form(
+        array(
+            "matriz/create",
+            "autocomplete" => "off",
+            "class" => "form-horizontal"
+        )
+    );
+?>
+
+<div class="form-group">
+    <label for="fieldDisciplinacodDis" class="col-sm-2 control-label">Código da disciplina </label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("disciplinacod_dis", "type" => "number", "class" => "form-control", "id" => "fieldDisciplinacodDis")) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldCursocodcur" class="col-sm-2 control-label">Código do curso </label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("cursocodcur", "type" => "number", "class" => "form-control", "id" => "fieldCursocodcur")) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldFasmat" class="col-sm-2 control-label">Fase da matriz </label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("fasmat", "type" => "number", "class" => "form-control", "id" => "fieldFasmat")) ?>
+    </div>
+</div>
+
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <?php echo $this->tag->submitButton(array("Salvar", "class" => "btn btn-default")) ?>
+    </div>
+</div>
+
+<?php echo $this->tag->endForm(); ?>

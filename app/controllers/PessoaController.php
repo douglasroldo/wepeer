@@ -35,7 +35,7 @@ class PessoaController extends ControllerBase
 
         $pessoa = Pessoa::find($parameters);
         if (count($pessoa) == 0) {
-            $this->flash->notice("The search did not find any pessoa");
+            $this->flash->notice("A busca não encontrou nenhuma pessoa");
 
             $this->dispatcher->forward(array(
                 "controller" => "pessoa",
@@ -73,7 +73,7 @@ class PessoaController extends ControllerBase
 
             $pessoa = Pessoa::findFirstBycodpes($codpes);
             if (!$pessoa) {
-                $this->flash->error("pessoa was not found");
+                $this->flash->error("Pessoa não foi encontrado");
 
                 $this->dispatcher->forward(array(
                     'controller' => "pessoa",
@@ -133,7 +133,7 @@ class PessoaController extends ControllerBase
             return;
         }
 
-        $this->flash->success("pessoa was created successfully");
+        $this->flash->success("Pessoa foi criado com êxito");
 
         $this->dispatcher->forward(array(
             'controller' => "pessoa",
@@ -161,7 +161,7 @@ class PessoaController extends ControllerBase
         $pessoa = Pessoa::findFirstBycodpes($codpes);
 
         if (!$pessoa) {
-            $this->flash->error("pessoa does not exist " . $codpes);
+            $this->flash->error("Pessoa não existe" . $codpes);
 
             $this->dispatcher->forward(array(
                 'controller' => "pessoa",
@@ -195,7 +195,7 @@ class PessoaController extends ControllerBase
             return;
         }
 
-        $this->flash->success("pessoa was updated successfully");
+        $this->flash->success("Pessoa foi atualizada com sucesso");
 
         $this->dispatcher->forward(array(
             'controller' => "pessoa",
@@ -212,7 +212,7 @@ class PessoaController extends ControllerBase
     {
         $pessoa = Pessoa::findFirstBycodpes($codpes);
         if (!$pessoa) {
-            $this->flash->error("pessoa was not found");
+            $this->flash->error("Pessoa não foi encontrada");
 
             $this->dispatcher->forward(array(
                 'controller' => "pessoa",
@@ -236,7 +236,7 @@ class PessoaController extends ControllerBase
             return;
         }
 
-        $this->flash->success("pessoa was deleted successfully");
+        $this->flash->success("Pessoa foi deletada com sucesso");
 
         $this->dispatcher->forward(array(
             'controller' => "pessoa",

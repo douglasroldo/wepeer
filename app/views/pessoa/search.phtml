@@ -9,14 +9,14 @@
 <div class="row">
     <nav>
         <ul class="pager">
-            <li class="previous"><?php echo $this->tag->linkTo(array("pessoa/index", "Go Back")); ?></li>
-            <li class="next"><?php echo $this->tag->linkTo(array("pessoa/new", "Create ")); ?></li>
+            <li class="previous"><?php echo $this->tag->linkTo(array("pessoa/index", "Voltar")); ?></li>
+            <li class="next"><?php echo $this->tag->linkTo(array("pessoa/new", "Criar ")); ?></li>
         </ul>
     </nav>
 </div>
 
 <div class="page-header">
-    <h1>Search result</h1>
+    <h1>Relatorios de Pessoas</h1>
 </div>
 
 <?php echo $this->getContent(); ?>
@@ -48,8 +48,8 @@
             <td><?php echo $pessoa->dasnascpes ?></td>
             <td><?php echo $pessoa->emapes ?></td>
 
-                <td><?php echo $this->tag->linkTo(array("pessoa/edit/" . $pessoa->codpes, "Edit")); ?></td>
-                <td><?php echo $this->tag->linkTo(array("pessoa/delete/" . $pessoa->codpes, "Delete")); ?></td>
+                <td><?php echo $this->tag->linkTo(array("pessoa/edit/" . $pessoa->codpes, "Editar")); ?></td>
+                <td><?php echo $this->tag->linkTo(array("pessoa/delete/" . $pessoa->codpes, "Deletar")); ?></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
@@ -65,10 +65,10 @@
     <div class="col-sm-11">
         <nav>
             <ul class="pagination">
-                <li><?php echo $this->tag->linkTo("pessoa/search", "First") ?></li>
-                <li><?php echo $this->tag->linkTo("pessoa/search?page=" . $page->before, "Previous") ?></li>
-                <li><?php echo $this->tag->linkTo("pessoa/search?page=" . $page->next, "Next") ?></li>
-                <li><?php echo $this->tag->linkTo("pessoa/search?page=" . $page->last, "Last") ?></li>
+                <li><?php echo $this->tag->linkTo("pessoa/search", "Primeiro") ?></li>
+                <li><?php echo $this->tag->linkTo("pessoa/search?page=" . $page->before, "Anterior") ?></li>
+                <li><?php echo $this->tag->linkTo("pessoa/search?page=" . $page->next, "Proximo") ?></li>
+                <li><?php echo $this->tag->linkTo("pessoa/search?page=" . $page->last, "Final") ?></li>
             </ul>
         </nav>
     </div>

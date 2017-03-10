@@ -7,14 +7,14 @@
 <div class="row">
     <nav>
         <ul class="pager">
-            <li class="previous"><?php echo $this->tag->linkTo(array("professor", "Back")) ?></li>
+            <li class="previous"><?php echo $this->tag->linkTo(array("professor", "Voltar")) ?></li>
         </ul>
     </nav>
 </div>
 
 <div class="page-header">
     <h1>
-        Edit professor
+        Editar professor
     </h1>
 </div>
 
@@ -31,14 +31,14 @@
 ?>
 
 <div class="form-group">
-    <label for="fieldCodprofessor" class="col-sm-2 control-label">Codprofessor</label>
+    <label for="fieldCodprofessor" class="col-sm-2 control-label">Código do Professor</label>
     <div class="col-sm-10">
         <?php echo $this->tag->textField(array("codprofessor", "type" => "number", "class" => "form-control", "id" => "fieldCodprofessor")) ?>
     </div>
 </div>
 
 <div class="form-group">
-    <label for="fieldDespro" class="col-sm-2 control-label">Despro</label>
+    <label for="fieldDespro" class="col-sm-2 control-label">Nome</label>
     <div class="col-sm-10">
         <?php echo $this->tag->textField(array("despro", "size" => 30, "class" => "form-control", "id" => "fieldDespro")) ?>
     </div>
@@ -49,7 +49,7 @@
 
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-        <?php echo $this->tag->submitButton(array("Save", "class" => "btn btn-default")) ?>
+        <?php echo $this->tag->submitButton(array("Salvar", "class" => "btn btn-default")) ?>
     </div>
 </div>
 

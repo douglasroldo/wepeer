@@ -1,9 +1,32 @@
 <div class="page-header">
-    <h2>Sobre WePeer</h2>
+   
+    <h2>Objetivo da webapp</h2>
+    <p>A WePeer é uma ferramenta para ajudar na implementação 
+    do metodo ativo de ensino Peer Instruction em instituições
+    de Ensino Superior 
+    </p>
+    
+    <h2>Quem somos nós?</h2>
+      <p>Essa aplicação foi desenvolvida como trabalho de conclusão de curso
+      na Universidade do Oeste de Santa Catarina (UNOESC)</p>
+    <p>
+      No curso de Ciencia da computação
+      no campus de São miguel do Oeste
+      pelo academico Douglas Juliano Roldo
+      e seu orientador professor Roberson Junior Fernandes Alves
+    </p>   
+    
+    
+    
+    
+    
 </div>
 
 <p>
-This is a sample application for the <a href="http://phalconphp.com">Phalcon Framework</a>. We expect to implement as many features as possible to show how the framework works and its potential.
-Please write us if you have any feedback or comments. Feel free to clone the code of this application <a href="https://github.com/phalcon/invo">here</a>.
-Thanks!
+
 </p>
+
+
+</div>
+
+

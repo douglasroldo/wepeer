@@ -6,7 +6,7 @@ use Phalcon\Paginator\Adapter\Model as Paginator;
 class PeerController extends ControllerBase {
 
 		public function initialize() {
-			$this->tag->setTitle ( 'Contact us' );
+			$this->tag->setTitle ( ' | Peer' );
 			parent::initialize ();
 		}
 
@@ -38,7 +38,7 @@ class PeerController extends ControllerBase {
 		
 		$peer = Peer::find ( $parameters );
 		if (count ( $peer ) == 0) {
-			$this->flash->notice ( "The search did not find any peer" );
+			$this->flash->notice ( "A busca não encontrou nenhum peer" );
 			
 			$this->dispatcher->forward ( array (
 					"controller" => "peer",
@@ -73,7 +73,7 @@ class PeerController extends ControllerBase {
 			
 			$peer = Peer::findFirstByturmacodtur ( $turmacodtur );
 			if (! $peer) {
-				$this->flash->error ( "peer was not found" );
+				$this->flash->error ( "Peer não foi encontrado" );
 				
 				$this->dispatcher->forward ( array (
 						'controller' => "peer",
@@ -127,7 +127,7 @@ class PeerController extends ControllerBase {
 			return;
 		}
 		
-		$this->flash->success ( "peer was created successfully" );
+		$this->flash->success ( "Peer foi criado com êxito" );
 		
 		$this->dispatcher->forward ( array (
 				'controller' => "peer",
@@ -153,7 +153,7 @@ class PeerController extends ControllerBase {
 		$peer = Peer::findFirstByturmacodtur ( $turmacodtur );
 		
 		if (! $peer) {
-			$this->flash->error ( "peer does not exist " . $turmacodtur );
+			$this->flash->error ( "Peer não existe " . $turmacodtur );
 			
 			$this->dispatcher->forward ( array (
 					'controller' => "peer",
@@ -165,7 +165,7 @@ class PeerController extends ControllerBase {
 		
 		$peer->turmacodtur = $this->request->getPost ( "turmacodtur" );
 		$peer->despee = $this->request->getPost ( "despee" );
-		$peer->datcadpee = $this->request->getPost ( "datcadpee" );
+		$peer->datcadpee = date("Y-m-d H:i:s");
 		$peer->dasexepee = $this->request->getPost ( "dasexepee" );
 		$peer->dasfimpee = $this->request->getPost ( "dasfimpee" );
 		
@@ -186,7 +186,7 @@ class PeerController extends ControllerBase {
 			return;
 		}
 		
-		$this->flash->success ( "peer was updated successfully" );
+		$this->flash->success ( "Peer foi atualizada com sucesso" );
 		
 		$this->dispatcher->forward ( array (
 				'controller' => "peer",
@@ -202,7 +202,7 @@ class PeerController extends ControllerBase {
     public function deleteAction($turmacodtur) {
 		$peer = Peer::findFirstByturmacodtur ( $turmacodtur );
 		if (! $peer) {
-			$this->flash->error ( "peer was not found" );
+			$this->flash->error ( "Peer não foi encontrada" );
 			
 			$this->dispatcher->forward ( array (
 					'controller' => "peer",
@@ -226,7 +226,7 @@ class PeerController extends ControllerBase {
 			return;
 		}
 		
-		$this->flash->success ( "peer was deleted successfully" );
+		$this->flash->success ( "Peer foi deletada com sucesso" );
 		
 		$this->dispatcher->forward ( array (
 				'controller' => "peer",

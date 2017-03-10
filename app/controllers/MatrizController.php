@@ -35,7 +35,7 @@ class MatrizController extends ControllerBase
 
         $matriz = Matriz::find($parameters);
         if (count($matriz) == 0) {
-            $this->flash->notice("The search did not find any matriz");
+            $this->flash->notice("A busca não encontrou nenhuma matriz");
 
             $this->dispatcher->forward(array(
                 "controller" => "matriz",
@@ -73,7 +73,7 @@ class MatrizController extends ControllerBase
 
             $matriz = Matriz::findFirstBydisciplinacod_dis($disciplinacod_dis);
             if (!$matriz) {
-                $this->flash->error("matriz was not found");
+                $this->flash->error("Matriz não foi encontrado");
 
                 $this->dispatcher->forward(array(
                     'controller' => "matriz",
@@ -125,7 +125,7 @@ class MatrizController extends ControllerBase
             return;
         }
 
-        $this->flash->success("matriz was created successfully");
+        $this->flash->success("Matriz foi criado com êxito");
 
         $this->dispatcher->forward(array(
             'controller' => "matriz",
@@ -153,7 +153,7 @@ class MatrizController extends ControllerBase
         $matriz = Matriz::findFirstBydisciplinacod_dis($disciplinacod_dis);
 
         if (!$matriz) {
-            $this->flash->error("matriz does not exist " . $disciplinacod_dis);
+            $this->flash->error("Matriz não existe " . $disciplinacod_dis);
 
             $this->dispatcher->forward(array(
                 'controller' => "matriz",
@@ -183,7 +183,7 @@ class MatrizController extends ControllerBase
             return;
         }
 
-        $this->flash->success("matriz was updated successfully");
+        $this->flash->success("Matriz foi atualizada com sucesso");
 
         $this->dispatcher->forward(array(
             'controller' => "matriz",
@@ -200,7 +200,7 @@ class MatrizController extends ControllerBase
     {
         $matriz = Matriz::findFirstBydisciplinacod_dis($disciplinacod_dis);
         if (!$matriz) {
-            $this->flash->error("matriz was not found");
+            $this->flash->error("Matriz não foi encontrada");
 
             $this->dispatcher->forward(array(
                 'controller' => "matriz",
@@ -224,7 +224,7 @@ class MatrizController extends ControllerBase
             return;
         }
 
-        $this->flash->success("matriz was deleted successfully");
+        $this->flash->success("Matriz foi deletada com sucesso");
 
         $this->dispatcher->forward(array(
             'controller' => "matriz",

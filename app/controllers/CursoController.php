@@ -19,6 +19,7 @@ class CursoController extends ControllerBase
      */
     public function searchAction()
     {
+   
         $numberPage = 1;
         if ($this->request->isPost()) {
             $query = Criteria::fromInput($this->di, 'Curso', $_POST);
@@ -32,8 +33,8 @@ class CursoController extends ControllerBase
             $parameters = array();
         }
         $parameters["order"] = "codcur";
-
         $curso = Curso::find($parameters);
+  
         if (count($curso) == 0) {
             $this->flash->notice("The search did not find any curso");
 

@@ -40,8 +40,8 @@
             <td><?php echo $pergunta->codper ?></td>
             <td><?php echo $pergunta->desper ?></td>
 
-                <td><?php echo $this->tag->linkTo(array("pergunta/edit/" . $pergunta->categoriacodcat, "Edit")); ?></td>
-                <td><?php echo $this->tag->linkTo(array("pergunta/delete/" . $pergunta->categoriacodcat, "Delete")); ?></td>
+                <td><?php echo $this->tag->linkTo(array("pergunta/edit/" . $pergunta->categoriacodcat, "Editar")); ?></td>
+                <td><?php echo $this->tag->linkTo(array("pergunta/delete/" . $pergunta->categoriacodcat, "Deletar")); ?></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
@@ -57,10 +57,10 @@
     <div class="col-sm-11">
         <nav>
             <ul class="pagination">
-                <li><?php echo $this->tag->linkTo("pergunta/search", "First") ?></li>
-                <li><?php echo $this->tag->linkTo("pergunta/search?page=" . $page->before, "Previous") ?></li>
-                <li><?php echo $this->tag->linkTo("pergunta/search?page=" . $page->next, "Next") ?></li>
-                <li><?php echo $this->tag->linkTo("pergunta/search?page=" . $page->last, "Last") ?></li>
+                <li><?php echo $this->tag->linkTo("pergunta/search", "Primeiro") ?></li>
+                <li><?php echo $this->tag->linkTo("pergunta/search?page=" . $page->before, "Anterior") ?></li>
+                <li><?php echo $this->tag->linkTo("pergunta/search?page=" . $page->next, "Proximo") ?></li>
+                <li><?php echo $this->tag->linkTo("pergunta/search?page=" . $page->last, "Final") ?></li>
             </ul>
         </nav>
     </div>

@@ -35,7 +35,7 @@ class CategoriaController extends ControllerBase
 
         $categoria = Categoria::find($parameters);
         if (count($categoria) == 0) {
-            $this->flash->notice("The search did not find any categoria");
+            $this->flash->notice("A busca não encontrou nenhuma categoria");
 
             $this->dispatcher->forward(array(
                 "controller" => "categoria",
@@ -73,7 +73,7 @@ class CategoriaController extends ControllerBase
 
             $categoria = Categoria::findFirstBycodcat($codcat);
             if (!$categoria) {
-                $this->flash->error("categoria was not found");
+                $this->flash->error("Categoria não foi encontrado");
 
                 $this->dispatcher->forward(array(
                     'controller' => "categoria",
@@ -122,7 +122,7 @@ class CategoriaController extends ControllerBase
             return;
         }
 
-        $this->flash->success("categoria was created successfully");
+        $this->flash->success("Categoria foi criado com êxito");
 
         $this->dispatcher->forward(array(
             'controller' => "categoria",
@@ -150,7 +150,7 @@ class CategoriaController extends ControllerBase
         $categoria = Categoria::findFirstBycodcat($codcat);
 
         if (!$categoria) {
-            $this->flash->error("categoria does not exist " . $codcat);
+            $this->flash->error("A disciplina não existe  " . $codcat);
 
             $this->dispatcher->forward(array(
                 'controller' => "categoria",
@@ -178,7 +178,7 @@ class CategoriaController extends ControllerBase
             return;
         }
 
-        $this->flash->success("categoria was updated successfully");
+        $this->flash->success("Categoria foi atualizada com sucesso");
 
         $this->dispatcher->forward(array(
             'controller' => "categoria",
@@ -195,7 +195,7 @@ class CategoriaController extends ControllerBase
     {
         $categoria = Categoria::findFirstBycodcat($codcat);
         if (!$categoria) {
-            $this->flash->error("categoria was not found");
+            $this->flash->error("Categoria não encontrada");
 
             $this->dispatcher->forward(array(
                 'controller' => "categoria",
@@ -219,7 +219,7 @@ class CategoriaController extends ControllerBase
             return;
         }
 
-        $this->flash->success("categoria was deleted successfully");
+        $this->flash->success("Categoria foi deletada com sucesso ");
 
         $this->dispatcher->forward(array(
             'controller' => "categoria",

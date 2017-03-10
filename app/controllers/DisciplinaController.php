@@ -35,7 +35,7 @@ class DisciplinaController extends ControllerBase
 
         $disciplina = Disciplina::find($parameters);
         if (count($disciplina) == 0) {
-            $this->flash->notice("The search did not find any disciplina");
+            $this->flash->notice("A busca não encontrou nenhuma disciplina");
 
             $this->dispatcher->forward(array(
                 "controller" => "disciplina",
@@ -73,7 +73,7 @@ class DisciplinaController extends ControllerBase
 
             $disciplina = Disciplina::findFirstBycod_dis($cod_dis);
             if (!$disciplina) {
-                $this->flash->error("disciplina was not found");
+                $this->flash->error("Disciplina não foi encontrado");
 
                 $this->dispatcher->forward(array(
                     'controller' => "disciplina",
@@ -126,7 +126,7 @@ class DisciplinaController extends ControllerBase
             return;
         }
 
-        $this->flash->success("disciplina was created successfully");
+        $this->flash->success("Disciplina foi criado com êxito");
 
         $this->dispatcher->forward(array(
             'controller' => "disciplina",
@@ -154,7 +154,7 @@ class DisciplinaController extends ControllerBase
         $disciplina = Disciplina::findFirstBycod_dis($cod_dis);
 
         if (!$disciplina) {
-            $this->flash->error("disciplina does not exist " . $cod_dis);
+            $this->flash->error("Disciplina não existe " . $cod_dis);
 
             $this->dispatcher->forward(array(
                 'controller' => "disciplina",
@@ -184,7 +184,7 @@ class DisciplinaController extends ControllerBase
             return;
         }
 
-        $this->flash->success("disciplina was updated successfully");
+        $this->flash->success("Disciplina foi atualizada com sucesso");
 
         $this->dispatcher->forward(array(
             'controller' => "disciplina",
@@ -201,7 +201,7 @@ class DisciplinaController extends ControllerBase
     {
         $disciplina = Disciplina::findFirstBycod_dis($cod_dis);
         if (!$disciplina) {
-            $this->flash->error("disciplina was not found");
+            $this->flash->error("Disciplina  não foi encontrada");
 
             $this->dispatcher->forward(array(
                 'controller' => "disciplina",
@@ -225,7 +225,7 @@ class DisciplinaController extends ControllerBase
             return;
         }
 
-        $this->flash->success("disciplina was deleted successfully");
+        $this->flash->success("Disciplina foi deletada com sucesso");
 
         $this->dispatcher->forward(array(
             'controller' => "disciplina",

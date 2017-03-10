@@ -11,123 +11,135 @@ class Elements extends Component {
 			'navbar-left' => array (
 					'index' => array (
 							'caption' => 'Home',
-							'action' => 'index'
+							'action' => 'index' 
 					),
 					'invoices' => array (
 							'caption' => 'Invoices',
-							'action' => 'index'
+							'action' => 'index' 
 					),
-						
+					
 					'peer' => array (
 							'caption' => 'Peer',
-							'action' => 'index'
+							'action' => 'index' 
 					),
 					'D_cadastro' => array (
 							array (
 									'controller' => 'peer',
-									'caption' => 'Cadastrar Peer',
-									'action' => 'new'
+									'caption' => ' Peer',
+									'action' => 'new' 
 							),
 							array (
 									'controller' => 'pessoa',
-									'caption' => 'Cadastrar Pessoa',
-									'action' => 'new'
+									'caption' => ' Pessoa',
+									'action' => 'new' 
 							),
 							array (
 									'controller' => 'aluno',
-									'caption' => 'Cadastar Aluno',
-									'action' => 'new'
+									'caption' => ' Aluno',
+									'action' => 'new' 
 							),
 							array (
 									'controller' => 'professor',
-									'caption' => 'Cadastar Profesor',
-									'action' => 'new'
+									'caption' => ' Profesor',
+									'action' => 'new' 
+							
 							),
 							array (
+									'controller' => 'disciplina',
+									'caption' => ' Disciplina',
+									'action' => 'new'		
+	),
+							array (
 									'controller' => 'turma',
-									'caption' => 'Cadastar Turma',
-									'action' => 'new'
+									'caption' => ' Turma',
+									'action' => 'new' 
 							),
 							array (
 									'controller' => 'curso',
-									'caption' => 'Cadastar Curso',
-									'action' => 'new'
-							)
-					)
-					,
-					'D_pesquisar' => array (
+									'caption' => ' Curso',
+									'action' => 'new' 
+							) 
+					),
+					'D_relatorio' => array (
 							array (
 									'controller' => 'peer',
-									'caption' => 'Pesquisar Peer',
-									'action' => 'search'
+									'caption' => ' Peer',
+									'action' => 'search' 
 							),
 							array (
 									'controller' => 'pessoa',
-									'caption' => 'Pesquisar Pessoa',
-									'action' => 'search'
+									'caption' => ' Pessoa',
+									'action' => 'search' 
 							),
 							array (
 									'controller' => 'aluno',
-									'caption' => 'Pesquisar Aluno',
-									'action' => 'search'
+									'caption' => ' Aluno',
+									'action' => 'search' 
 							),
 							array (
 									'controller' => 'professor',
-									'caption' => 'Pesquisar Profesor',
-									'action' => 'search'
+									'caption' => ' Profesor',
+									'action' => 'search' 
+							
 							),
 							array (
-									'controller' => 'turma',
-									'caption' => 'Pesquisar Turma',
+									'controller' => 'disciplina',
+									'caption' => ' Disciplina',
 									'action' => 'search'
+							),
+							
+							array (
+									'controller' => 'turma',
+									'caption' => ' Turma',
+									'action' => 'search' 
 							),
 							array (
 									'controller' => 'curso',
-									'caption' => 'Pesquisar Curso',
-									'action' => 'search'
-							)
+									'caption' => ' Curso',
+									'action' => 'search' 
+							) 
 					),
 					'about' => array (
 							'caption' => 'Sobre',
-							'action' => 'index'
-					)
+							'action' => 'index' 
+					) 
 			),
 			'navbar-right' => array (
 					'session' => array (
-							'caption' => 'Login',
-							'action' => 'index'
-					)
-			)
-	)
-	;
+							'caption' => 'Entrar',
+							'action' => 'index' 
+					) 
+			) 
+	);
+
 	private $_tabs = array (
 			'Invoices' => array (
 					'controller' => 'invoices',
 					'action' => 'index',
-					'any' => false
+					'any' => false 
 			),
 			'Companies' => array (
 					'controller' => 'companies',
 					'action' => 'index',
-					'any' => true
+					'any' => true 
 			),
 			'Products' => array (
 					'controller' => 'products',
 					'action' => 'index',
-					'any' => true
+					'any' => true 
 			),
 			'Product Types' => array (
 					'controller' => 'producttypes',
 					'action' => 'index',
-					'any' => true
+					'any' => true 
 			),
 			'Your Profile' => array (
 					'controller' => 'invoices',
 					'action' => 'profile',
-					'any' => false
-			)
+					'any' => false 
+			) 
 	);
-
+	
 	/**
 	 * Builds header menu with left and right items
 	 *
@@ -138,12 +150,12 @@ class Elements extends Component {
 		if ($auth) {
 			$this->_headerMenu ['navbar-right'] ['session'] = array (
 					'caption' => 'Log Out',
-					'action' => 'end'
+					'action' => 'end' 
 			);
 		} else {
 			unset ( $this->_headerMenu ['navbar-left'] ['invoices'] );
 		}
-
+		
 		$controllerName = $this->view->getControllerName ();
 		foreach ( $this->_headerMenu as $position => $menu ) {
 			echo '<div class="nav-collapse">';
@@ -159,10 +171,10 @@ class Elements extends Component {
 					echo '</li>';
 				} else {
 					echo '<li class="dropdown">';
-					echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . $controller . ' <span class="caret"></span></a>';
+					echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . ucfirst ( substr ( $controller, 2 ) ) . ' <span class="caret"></span></a>';
 					echo '<ul class="dropdown-menu">';
-					foreach ($option as $opt) {
-						echo '<li>'. $this->tag->linkTo ( $opt['controller'] . '/' . $opt ['action'], $opt ['caption'] ) . '</li>';
+					foreach ( $option as $opt ) {
+						echo '<li>' . $this->tag->linkTo ( $opt ['controller'] . '/' . $opt ['action'], $opt ['caption'] ) . '</li>';
 					}
 					echo '</ul>';
 					echo '</li>';
@@ -172,7 +184,7 @@ class Elements extends Component {
 			echo '</div>';
 		}
 	}
-
+	
 	/**
 	 * Returns menu tabs
 	 */

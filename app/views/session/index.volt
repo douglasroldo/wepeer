@@ -31,10 +31,10 @@
     <div class="col-md-6">
 
         <div class="page-header">
-            <h2>Don't have an account yet?</h2>
+            <h2>Não tem uma conta ainda?</h2>
         </div>
 
-        <p>Create an account offers the following advantages:</p>
+        <p>Criar uma conta oferece as seguintes vantagens:</p>
         <ul>
             <li>Create, track and export your invoices online</li>
             <li>Gain critical insights into how your business is doing</li>

@@ -11,7 +11,8 @@ class AlunoController extends ControllerBase
      */
     public function indexAction()
     {
-        $this->persistent->parameters = null;
+        
+        $this->tag->setTitle('| Aluno');
     }
 
     /**
@@ -109,7 +110,7 @@ class AlunoController extends ControllerBase
 
         $aluno = new Aluno();
         $aluno->desalu = $this->request->getPost("desalu");
-        $aluno->dascadalu = $this->request->getPost("dascadalu");
+        $aluno->dascadalu = date("Y-m-d H:i:s");
         $aluno->sitalu = $this->request->getPost("sitalu");
         
 

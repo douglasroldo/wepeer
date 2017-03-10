@@ -35,7 +35,7 @@ class PerguntaController extends ControllerBase
 
         $pergunta = Pergunta::find($parameters);
         if (count($pergunta) == 0) {
-            $this->flash->notice("The search did not find any pergunta");
+            $this->flash->notice("A busca não encontrou nenhuma pergunta");
 
             $this->dispatcher->forward(array(
                 "controller" => "pergunta",
@@ -73,7 +73,7 @@ class PerguntaController extends ControllerBase
 
             $pergunta = Pergunta::findFirstBycategoriacodcat($categoriacodcat);
             if (!$pergunta) {
-                $this->flash->error("pergunta was not found");
+                $this->flash->error("Pergunta não foi encontrado");
 
                 $this->dispatcher->forward(array(
                     'controller' => "pergunta",
@@ -124,7 +124,7 @@ class PerguntaController extends ControllerBase
             return;
         }
 
-        $this->flash->success("pergunta was created successfully");
+        $this->flash->success("Pergunta foi criado com êxito");
 
         $this->dispatcher->forward(array(
             'controller' => "pergunta",
@@ -152,7 +152,7 @@ class PerguntaController extends ControllerBase
         $pergunta = Pergunta::findFirstBycategoriacodcat($categoriacodcat);
 
         if (!$pergunta) {
-            $this->flash->error("pergunta does not exist " . $categoriacodcat);
+            $this->flash->error("Pergunta não existe " . $categoriacodcat);
 
             $this->dispatcher->forward(array(
                 'controller' => "pergunta",
@@ -181,7 +181,7 @@ class PerguntaController extends ControllerBase
             return;
         }
 
-        $this->flash->success("pergunta was updated successfully");
+        $this->flash->success("Pergunta foi atualizada com sucesso");
 
         $this->dispatcher->forward(array(
             'controller' => "pergunta",
@@ -198,7 +198,7 @@ class PerguntaController extends ControllerBase
     {
         $pergunta = Pergunta::findFirstBycategoriacodcat($categoriacodcat);
         if (!$pergunta) {
-            $this->flash->error("pergunta was not found");
+            $this->flash->error("Pergunta não foi encontrada");
 
             $this->dispatcher->forward(array(
                 'controller' => "pergunta",
@@ -222,7 +222,7 @@ class PerguntaController extends ControllerBase
             return;
         }
 
-        $this->flash->success("pergunta was deleted successfully");
+        $this->flash->success("Pergunta foi deletada com sucesso");
 
         $this->dispatcher->forward(array(
             'controller' => "pergunta",

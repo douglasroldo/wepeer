@@ -26,7 +26,7 @@ class NotFoundPlugin extends Plugin
 	{
 		error_log($exception->getMessage() . PHP_EOL . $exception->getTraceAsString());
 
-		if ($exception instanceof DispatcherException) {
+		//if ($exception instanceof DispatcherException) {
 			switch ($exception->getCode()) {
 				case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
 				case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
@@ -36,12 +36,13 @@ class NotFoundPlugin extends Plugin
 					));
 					return false;
 			}
-		}
+//		}
 
 		$dispatcher->forward(array(
 			'controller' => 'errors',
 			'action'     => 'show500'
 		));
+		
 		return false;
 	}
 }

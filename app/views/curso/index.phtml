@@ -26,14 +26,14 @@
 ?>
 
 <div class="form-group">
-    <label for="fieldCodcur" class="col-sm-2 control-label">Código do curso </label>
+    <label for="fieldCodcur" class="col-sm-2 control-label">Código: </label>
     <div class="col-sm-10">
         <?php echo $this->tag->textField(array("codcur", "type" => "number", "class" => "form-control", "id" => "fieldCodcur")) ?>
     </div>
 </div>
 
 <div class="form-group">
-    <label for="fieldDescur" class="col-sm-2 control-label">Descrição do curso </label>
+    <label for="fieldDescur" class="col-sm-2 control-label">Nome: </label>
     <div class="col-sm-10">
         <?php echo $this->tag->textField(array("descur", "type" => "number", "class" => "form-control", "id" => "fieldDescur")) ?>
     </div>
@@ -42,7 +42,7 @@
 
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-        <?php echo $this->tag->submitButton(array("Procurar", "class" => "btn btn-default")) ?>
+        <?php echo $this->tag->submitButton(array("Pesquisar", "class" => "btn btn-default")) ?>
     </div>
 </div>
 

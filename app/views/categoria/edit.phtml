@@ -7,11 +7,7 @@
 <div class="row">
     <nav>
         <ul class="pager">
-<<<<<<< HEAD
-            <li class="previous"><?php echo $this->tag->linkTo(array("categoria", "back")) ?></li>
-=======
             <li class="previous"><?php echo $this->tag->linkTo(array("categoria", "Voltar")) ?></li>
->>>>>>> branch 'master' of https://github.com/douglasroldo/wepeer_principal.git
         </ul>
     </nav>
 </div>
@@ -35,7 +31,7 @@
 ?>
 
 <div class="form-group">
-    <label for="fieldDescat" class="col-sm-2 control-label">Descrição categoria </label>
+    <label for="fieldDescat" class="col-sm-2 control-label">Nome: </label>
     <div class="col-sm-10">
         <?php echo $this->tag->textField(array("descat", "size" => 30, "class" => "form-control", "id" => "fieldDescat")) ?>
     </div>

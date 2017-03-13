@@ -1,99 +1,103 @@
- <?php
+<?php
 
 /**
-* SessionController
-*
-* Allows to authenticate users
-*/
+ * SessionController
+ *
+ * Allows to authenticate users
+ */
 class SessionController extends ControllerBase {
-public function initialize() {
-$this->tag->setTitle ( 'Sign Up/Sign In' );
-parent::initialize ();
-}
-public function indexAction() {
-if (! $this->request->isPost ()) {
-$this->tag->setDefault ( 'email', 'demo@phalconphp.com' );
-$this->tag->setDefault ( 'password', 'phalcon' );
-}
-}
 
-/**
-* Register an authenticated user into session data
-*
-* @param Users $user        	
-*/
-private function _registerSession(Users $user) {
-$this->session->set ( 'auth', array (
-'id' => $user->id,
-'name' => $user->name 
-) );
-}
+    public function initialize() {
+        $this->tag->setTitle('Sign Up/Sign In');
+        parent::initialize();
+    }
 
-/**
-* This action authenticate and logs an user into the application
-*/
-public function startAction() {
-if ($this->request->isPost ()) {
+    public function indexAction() {
+        if (!$this->request->isPost()) {
+            $this->tag->setDefault('email', 'demo@phalconphp.com');
+            $this->tag->setDefault('password', 'phalcon');
+        }
+    }
 
-$email = $this->request->getPost ( 'email' );
-$password = $this->request->getPost ( 'password' );
+    /**
+     * Register an authenticated user into session data
+     *
+     * @param Users $user        	
+     */
+    private function _registerSession(Pessoa $user) {
+        $this->session->set('auth', array(
+            'codpes' => $user->codpes,
+            'nompes' => $user->nompes
+        ));
+    }
 
-$user = Users::findFirst ( array (
-"(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-'bind' => array (
-'email' => $email,
-'password' => sha1 ( $password ) 
-) 
-) );
-if ($user != false) {
-$this->_registerSession ( $user );
-$this->flash->success ( 'Welcome ' . $user->name );
+    /**
+     * This action authenticate and logs an user into the application
+     */
+    public function startAction() {
+        if ($this->request->isPost()) {
 
-return $this->dispatcher->forward ( [ 
-"controller" => "invoices",
-"action" => "index" 
-] );
-}
+            $email = $this->request->getPost('email');
+            $password = $this->request->getPost('password');
 
-$this->flash->error ( 'Wrong email/password' );
-}
+            $user = Pessoa::findFirst(array(
+                        "emapes = :email:",
+                //AND senpes = :password:",
+                        'bind' => array(
+                            'email' => $email
+                        )
+                    ));
+            if ($user != false) {
+                $this->_registerSession($user);
+                $this->flash->success('Welcome ' . $user->nompes);
 
-return $this->dispatcher->forward ( [ 
-"controller" => "session",
-"action" => "index" 
-] );
-}
+                return $this->dispatcher->forward([
+                            "controller" => "home",
+                            "action" => "index"
+                        ]);
+            }
 
-/**
-* Finishes the active session redirecting to the index
-*
-* @return unknown
-*/
-public function endAction() {
-$this->session->remove ( 'auth' );
-$this->flash->success ( 'Goodbye!' );
+            $this->flash->error('Wrong email/password');
+        }
 
-return $this->dispatcher->forward ( [ 
-"controller" => "index",
-"action" => "index" 
-] );
-}
-public function loginMobileAction() {
-$this->view->disable ();
+        return $this->dispatcher->forward([
+                    "controller" => "session",
+                    "action" => "index"
+                ]);
+    }
 
-/*$u = Users::findFirst ( array (
-"(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
-'bind' => array (
-'email' => $usuario,
-'password' => sha1 ( $senha ) 
-) 
-) );
-var_dump($u);*/
+    /**
+     * Finishes the active session redirecting to the index
+     *
+     * @return unknown
+     */
+    public function endAction() {
+        $this->session->remove('auth');
+        $this->flash->success('Goodbye!');
 
-if (true) {
-echo "1";
-} else {
-echo "0";
-}
-}
+        return $this->dispatcher->forward([
+                    "controller" => "index",
+                    "action" => "index"
+                ]);
+    }
+
+    public function loginMobileAction() {
+        $this->view->disable();
+
+        /* $u = Users::findFirst ( array (
+          "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
+          'bind' => array (
+          'email' => $usuario,
+          'password' => sha1 ( $senha )
+          )
+          ) );
+          var_dump($u); */
+
+        if (true) {
+            echo "1";
+        } else {
+            echo "0";
+        }
+    }
+
 }

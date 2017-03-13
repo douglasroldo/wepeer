@@ -1,4 +1,5 @@
 <?php
+
 use Phalcon\Mvc\User\Component;
 
 /**
@@ -7,174 +8,188 @@ use Phalcon\Mvc\User\Component;
  * Helps to build UI elements for the application
  */
 class Elements extends Component {
-	private $_headerMenu = array (
-			'navbar-left' => array (
-					'index' => array (
+
+	private $_headerMenuPrivado = array(
+			'navbar-left' => array(
+					'index' => array(
 							'caption' => 'Home',
-							'action' => 'index' 
+							'action' => 'index'
 					),
-					'invoices' => array (
+					'invoices' => array(
 							'caption' => 'Invoices',
-							'action' => 'index' 
+							'action' => 'index'
 					),
-					
-					'peer' => array (
+					'peer' => array(
 							'caption' => 'Peer',
-							'action' => 'index' 
+							'action' => 'index'
 					),
-					'D_cadastro' => array (
-							array (
+					'D_cadastro' => array(
+							array(
 									'controller' => 'peer',
 									'caption' => ' Peer',
-									'action' => 'new' 
+									'action' => 'new'
 							),
-							array (
+							array(
 									'controller' => 'pessoa',
 									'caption' => ' Pessoa',
-									'action' => 'new' 
+									'action' => 'new'
 							),
-							array (
+							array(
 									'controller' => 'aluno',
 									'caption' => ' Aluno',
-									'action' => 'new' 
+									'action' => 'new'
 							),
-							array (
+							array(
 									'controller' => 'professor',
 									'caption' => ' Profesor',
-									'action' => 'new' 
-							
+									'action' => 'new'
 							),
-							array (
+							array(
 									'controller' => 'disciplina',
 									'caption' => ' Disciplina',
-									'action' => 'new'		
-	),
-							array (
+									'action' => 'new'
+							),
+							array(
 									'controller' => 'turma',
 									'caption' => ' Turma',
-									'action' => 'new' 
+									'action' => 'new'
 							),
-							array (
+							array(
 									'controller' => 'curso',
 									'caption' => ' Curso',
-									'action' => 'new' 
-							) 
+									'action' => 'new'
+							)
 					),
-					'D_relatorio' => array (
-							array (
+					'D_relatorio' => array(
+							array(
 									'controller' => 'peer',
 									'caption' => ' Peer',
-									'action' => 'search' 
+									'action' => 'search'
 							),
-							array (
+							array(
 									'controller' => 'pessoa',
 									'caption' => ' Pessoa',
-									'action' => 'search' 
+									'action' => 'search'
 							),
-							array (
+							array(
 									'controller' => 'aluno',
 									'caption' => ' Aluno',
-									'action' => 'search' 
+									'action' => 'search'
 							),
-							array (
+							array(
 									'controller' => 'professor',
 									'caption' => ' Profesor',
-									'action' => 'search' 
-							
+									'action' => 'search'
 							),
-							array (
+							array(
 									'controller' => 'disciplina',
 									'caption' => ' Disciplina',
 									'action' => 'search'
 							),
-							
-							array (
+							array(
 									'controller' => 'turma',
 									'caption' => ' Turma',
-									'action' => 'search' 
+									'action' => 'search'
 							),
-							array (
+							array(
 									'controller' => 'curso',
 									'caption' => ' Curso',
-									'action' => 'search' 
-							) 
+									'action' => 'search'
+							)
 					),
-					'about' => array (
+					'about' => array(
 							'caption' => 'Sobre',
-							'action' => 'index' 
-					) 
+							'action' => 'index'
+					)
 			),
-			'navbar-right' => array (
-					'session' => array (
+			'navbar-right' => array(
+					'session' => array(
 							'caption' => 'Entrar',
-							'action' => 'index' 
-					) 
-			) 
+							'action' => 'index'
+					)
+			)
 	);
-
-	private $_tabs = array (
-			'Invoices' => array (
+	private $_headerMenu = array(
+			'navbar-left' => array(
+					'index' => array(
+							'caption' => 'Home',
+							'action' => 'index'
+					),
+					'about' => array(
+							'caption' => 'Sobre',
+							'action' => 'index'
+					)
+			),
+			'navbar-right' => array(
+					'session' => array(
+							'caption' => 'Entrar',
+							'action' => 'index'
+					)
+			)
+	);
+	private $_tabs = array(
+			'Invoices' => array(
 					'controller' => 'invoices',
 					'action' => 'index',
-					'any' => false 
+					'any' => false
 			),
-			'Companies' => array (
+			'Companies' => array(
 					'controller' => 'companies',
 					'action' => 'index',
-					'any' => true 
+					'any' => true
 			),
-			'Products' => array (
+			'Products' => array(
 					'controller' => 'products',
 					'action' => 'index',
-					'any' => true 
+					'any' => true
 			),
-			'Product Types' => array (
+			'Product Types' => array(
 					'controller' => 'producttypes',
 					'action' => 'index',
-					'any' => true 
+					'any' => true
 			),
-			'Your Profile' => array (
+			'Your Profile' => array(
 					'controller' => 'invoices',
 					'action' => 'profile',
-					'any' => false 
-			) 
+					'any' => false
+			)
 	);
-	
+
 	/**
 	 * Builds header menu with left and right items
 	 *
 	 * @return string
 	 */
 	public function getMenu() {
-		$auth = $this->session->get ( 'auth' );
+		$auth = $this->session->get('auth');
 		if ($auth) {
-			$this->_headerMenu ['navbar-right'] ['session'] = array (
+			$this->_headerMenu ['navbar-right'] ['session'] = array(
 					'caption' => 'Log Out',
-					'action' => 'end' 
+					'action' => 'end'
 			);
 		} else {
-			unset ( $this->_headerMenu ['navbar-left'] ['invoices'] );
+			unset($this->_headerMenu ['navbar-left'] ['invoices']);
 		}
-		
-		$controllerName = $this->view->getControllerName ();
-		foreach ( $this->_headerMenu as $position => $menu ) {
+
+		$controllerName = $this->view->getControllerName();
+		foreach ($this->_headerMenu as $position => $menu) {
 			echo '<div class="nav-collapse">';
 			echo '<ul class="nav navbar-nav ', $position, '">';
-			foreach ( $menu as $controller => $option ) {
-				if (strpos ( $controller, 'D_' ) === false) {
+			foreach ($menu as $controller => $option) {
+				if (strpos($controller, 'D_') === false) {
 					if ($controllerName == $controller) {
 						echo '<li class="active">';
 					} else {
 						echo '<li>';
 					}
-					echo $this->tag->linkTo ( $controller . '/' . $option ['action'], $option ['caption'] );
+					echo $this->tag->linkTo($controller . '/' . $option ['action'], $option ['caption']);
 					echo '</li>';
 				} else {
 					echo '<li class="dropdown">';
-					echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . ucfirst ( substr ( $controller, 2 ) ) . ' <span class="caret"></span></a>';
+					echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . ucfirst(substr($controller, 2)) . ' <span class="caret"></span></a>';
 					echo '<ul class="dropdown-menu">';
-					foreach ( $option as $opt ) {
-						echo '<li>' . $this->tag->linkTo ( $opt ['controller'] . '/' . $opt ['action'], $opt ['caption'] ) . '</li>';
+					foreach ($option as $opt) {
+						echo '<li>' . $this->tag->linkTo($opt ['controller'] . '/' . $opt ['action'], $opt ['caption']) . '</li>';
 					}
 					echo '</ul>';
 					echo '</li>';
@@ -184,23 +199,23 @@ class Elements extends Component {
 			echo '</div>';
 		}
 	}
-	
+
 	/**
 	 * Returns menu tabs
 	 */
 	public function getTabs() {
-		$controllerName = $this->view->getControllerName ();
-		$actionName = $this->view->getActionName ();
+		$controllerName = $this->view->getControllerName();
+		$actionName = $this->view->getActionName();
 		echo '<ul class="nav nav-tabs">';
-		foreach ( $this->_tabs as $caption => $option ) {
+		foreach ($this->_tabs as $caption => $option) {
 			if ($option ['controller'] == $controllerName && ($option ['action'] == $actionName || $option ['any'])) {
 				echo '<li class="active">';
 			} else {
 				echo '<li>';
 			}
-			echo $this->tag->linkTo ( $option ['controller'] . '/' . $option ['action'], $caption ), '</li>';
+			echo $this->tag->linkTo($option ['controller'] . '/' . $option ['action'], $caption), '</li>';
 		}
 		echo '</ul>';
 	}
-}
 
+}

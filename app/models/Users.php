@@ -13,11 +13,11 @@ class Users extends Model
         )));
         $this->validate(new UniquenessValidator(array(
             'field' => 'email',
-            'message' => 'Sorry, The email was registered by another user'
+            'message' => 'Desculpe, O email foi registrado por outro usuário'
         )));
         $this->validate(new UniquenessValidator(array(
             'field' => 'username',
-            'message' => 'Sorry, That username is already taken'
+            'message' => 'Desculpe-me, este nome de usuário já está sendo utilizado'
         )));
         if ($this->validationHasFailed() == true) {
             return false;

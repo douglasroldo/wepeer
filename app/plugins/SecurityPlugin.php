@@ -10,11 +10,11 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 /**
  * SecurityPlugin
  *
- * This is the security plugin which controls that users only have access to the modules they're assigned to
+ * Este é o plugin de segurança que controla que os usuários tenham apenas acesso aos módulos aos quais são atribuídos
  */
 class SecurityPlugin extends Plugin {
 	/**
-	 * Returns an existing or new access control list
+	 * Retorna uma lista de controle de acesso existente ou nova
 	 *
 	 * @returns AclList
 	 */
@@ -27,15 +27,15 @@ class SecurityPlugin extends Plugin {
 				
 			// Register roles
 			$roles = [
-					'users' => new Role ( 'Users', 'Member privileges, granted after sign in.' ),
-					'guests' => new Role ( 'Guests', 'Anyone browsing the site who is not signed in is considered to be a "Guest".' )
+					'users' => new Role ( 'Users', 'Privilégios de membro, concedidos após o login.' ),
+					'guests' => new Role ( 'Guests', 'Qualquer pessoa que navegue no site que não tenha sessão iniciada é considerada uma "Convidado".' )
 			];
 				
 			foreach ( $roles as $role ) {
 				$acl->addRole ( $role );
 			}
 				
-			// Private area resources
+			// Recursos da área privada
 			$privateResources = array (
 					'peer' => array (
 							'index',
@@ -55,54 +55,7 @@ class SecurityPlugin extends Plugin {
 							'create',
 							'delete'
 					),
-					'producttypes' => array (
-							'index',
-							'search',
-							'new',
-							'edit',
-							'save',
-							'create',
-							'delete'
-					),
-					'invoices' => array (
-							'index',
-							'profile'
-					)
-			);
-			foreach ( $privateResources as $resource => $actions ) {
-				$acl->addResource ( new Resource ( $resource ), $actions );
-			}
-				
-			// Public area resources
-			$publicResources = array (
-					'index' => array (
-							'index'
-					),
-					'about' => array (
-							'index'
-					),
-					'register' => array (
-							'index'
-					),
-					'peer' => array (
-							'index',
-							'search',
-							'new',
-							'edit',
-							'save',
-							'create',
-							'delete'
-					),
-					'aluno' => array (
-							'index',
-							'search',
-							'new',
-							'edit',
-							'save',
-							'create',
-							'delete'
-					),
-					'categoria' => array (
+                                        'categoria' => array (
 							'index',
 							'search',
 							'new',
@@ -209,6 +162,35 @@ class SecurityPlugin extends Plugin {
 							'save',
 							'create',
 							'delete'
+					),
+					'producttypes' => array (
+							'index',
+							'search',
+							'new',
+							'edit',
+							'save',
+							'create',
+							'delete'
+					),
+					'invoices' => array (
+							'index',
+							'profile'
+					)
+			);
+			foreach ( $privateResources as $resource => $actions ) {
+				$acl->addResource ( new Resource ( $resource ), $actions );
+			}
+				
+			// Public area resources
+			$publicResources = array (
+					'index' => array (
+							'index'
+					),
+					'about' => array (
+							'index'
+					),
+					'register' => array (
+							'index'
 					),
 					'errors' => array (
 							'show401',

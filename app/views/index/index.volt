@@ -17,8 +17,8 @@
         <p> É uma concepção educacional que coloca os estudantes da graduação como principais agentes de seu aprendizado. Nela, o estímulo à crítica e reflexão são incentivados pelo professor que conduz a aula, mas o centro desse processo é, de fato, o próprio aluno</p>
     </div>
     <div class="col-md-4">
-        <h2> Design Web Responsivo</h2>
-        <p> A webapp pode ser acessado de um PC, notebook, smartphone ou tablet. Qualquer um destes dispositivos, independente da resolução ou capacidade de cor que, tem acesso à internet</p>
+        <h2>Ele tem design responsivo</h2>
+        <p>Este site é acesivel de qualquer dispositivo seja um notebook,smartphone e tablet, independente da resolução ou capacidade de cor ele se adapta automaticamente para o uso.<p>
     </div>
     <div class="col-md-4">
         <h2></h2>

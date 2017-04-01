@@ -38,143 +38,52 @@ class SecurityPlugin extends Plugin {
 			// Recursos da área privada
 			$privateResources = array (
 					'peer' => array (
-							'index',
-							'search',
-							'new',
-							'edit',
-							'save',
-							'create',
-							'delete'
+							'index','search','new','edit','save','create','delete'
 					),
 					'aluno' => array (
-							'index',
-							'search',
-							'new',
-							'edit',
-							'save',
-							'create',
-							'delete'
+							'index','search','new','edit','save','create','delete'
 					),
                                         'categoria' => array (
-							'index',
-							'search',
-							'new',
-							'edit',
-							'save',
-							'create',
-							'delete'
+							'index','search','new','edit','save','create','delete'
 					),
 					'curso' => array (
-							'index',
-							'search',
-							'new',
-							'edit',
-							'save',
-							'create',
-							'delete'
+							'index','search','new','edit','save','create','delete'
 					),
 					'disciplina' => array (
-							'index',
-							'search',
-							'new',
-							'edit',
-							'save',
-							'create',
-							'delete'
+							'index','search','new','edit','save','create','delete'
 					),
 					'matriz' => array (
-							'index',
-							'search',
-							'new',
-							'edit',
-							'save',
-							'create',
-							'delete'
+							'index','search','new','edit','save','create','delete'
 					),
 					'peer_aluno' => array (
-							'index',
-							'search',
-							'new',
-							'edit',
-							'save',
-							'create',
-							'delete'
+							'index','search','new','edit','save','create','delete'
 					),
 					'peerrespostas' => array (
-							'index',
-							'search',
-							'new',
-							'edit',
-							'save',
-							'create',
-							'delete'
+							'index','search','new','edit','save','create','delete'
 					),
 					'peerperguntas' => array (
-							'index',
-							'search',
-							'new',
-							'edit',
-							'save',
-							'create',
-							'delete'
+							'index','search','new','edit','save','create','delete'
 					),
 					'perguntas' => array (
-							'index',
-							'search',
-							'new',
-							'edit',
-							'save',
-							'create',
-							'delete'
+							'index','search','new','edit','save','create','delete'
 					),
 					'pessoa' => array (
-							'index',
-							'search',
-							'new',
-							'edit',
-							'save',
-							'create',
-							'delete'
+							'index','search','new','edit','save','create','delete'
 					),
 					'professor' => array (
-							'index',
-							'search',
-							'new',
-							'edit',
-							'save',
-							'create',
-							'delete'
+							'index','search','new','edit','save','create','delete'
 					),
 					'turma' => array (
-							'index',
-							'search',
-							'new',
-							'edit',
-							'save',
-							'create',
-							'delete'
+							'index','search','new','edit','save','create','delete'
 					),
 					'turma_aluno' => array (
-							'index',
-							'search',
-							'new',
-							'edit',
-							'save',
-							'create',
-							'delete'
+							'index','search','new','edit','save','create','delete'
 					),
 					'producttypes' => array (
-							'index',
-							'search',
-							'new',
-							'edit',
-							'save',
-							'create',
-							'delete'
+							'index','search','new','edit','save','create','delete'
 					),
 					'invoices' => array (
-							'index',
-							'profile'
+							'index','profile'
 					)
 			);
 			foreach ( $privateResources as $resource => $actions ) {
@@ -193,27 +102,20 @@ class SecurityPlugin extends Plugin {
 							'index'
 					),
 					'errors' => array (
-							'show401',
-							'show404',
-							'show500'
+							'show401','show404','show500'
 					),
 					'session' => array (
-							'index',
-							'register',
-							'start',
-							'loginMobile',
-							'end'
+							'index','register','start','loginMobile','end'
 					),
 					'contact' => array (
-							'index',
-							'send'
+							'index','send'
 					)
 			);
 			foreach ( $publicResources as $resource => $actions ) {
 				$acl->addResource ( new Resource ( $resource ), $actions );
 			}
 				
-			// Grant access to public areas to both users and guests
+			// Conceder acesso a áreas públicas para usuários e convidados
 			foreach ( $roles as $role ) {
 				foreach ( $publicResources as $resource => $actions ) {
 					foreach ( $actions as $action ) {
@@ -222,14 +124,14 @@ class SecurityPlugin extends Plugin {
 				}
 			}
 				
-			// Grant access to private area to role Users
+			// Conceder acesso a área privada para usuários
 			foreach ( $privateResources as $resource => $actions ) {
 				foreach ( $actions as $action ) {
 					$acl->allow ( 'Users', $resource, $action );
 				}
 			}
 				
-			// The acl is stored in session, APC would be useful here too
+			// O acl é armazenado na sessão, APC seria útil aqui também
 			$this->persistent->acl = $acl;
 		}
 
@@ -237,7 +139,7 @@ class SecurityPlugin extends Plugin {
 	}
 
 	/**
-	 * This action is executed before execute any action in the application
+	 * Esta ação é executada antes de executar qualquer ação na aplicação
 	 *
 	 * @param Event $event
 	 * @param Dispatcher $dispatcher

@@ -27,8 +27,8 @@ class SecurityPlugin extends Plugin {
 				
 			// Register roles
 			$roles = [
-					'users' => new Role ( 'Users', 'Privilégios de membro, concedidos após o login.' ),
-					'guests' => new Role ( 'Guests', 'Qualquer pessoa que navegue no site que não tenha sessão iniciada é considerada uma "Convidado".' )
+					'administradores' => new Role ( 'Administradores', 'Privilégios de membro, concedidos após o login.' ),
+					'visitantes' => new Role ( 'Visitantes', 'Qualquer pessoa que navegue no site que não tenha sessão iniciada é considerada uma "Convidado".' )
 			];
 				
 			foreach ( $roles as $role ) {
@@ -78,12 +78,6 @@ class SecurityPlugin extends Plugin {
 					),
 					'turma_aluno' => array (
 							'index','search','new','edit','save','create','delete'
-					),
-					'producttypes' => array (
-							'index','search','new','edit','save','create','delete'
-					),
-					'invoices' => array (
-							'index','profile'
 					)
 			);
 			foreach ( $privateResources as $resource => $actions ) {
@@ -127,7 +121,7 @@ class SecurityPlugin extends Plugin {
 			// Conceder acesso a área privada para usuários
 			foreach ( $privateResources as $resource => $actions ) {
 				foreach ( $actions as $action ) {
-					$acl->allow ( 'Users', $resource, $action );
+					$acl->allow ( 'Administradores', $resource, $action );
 				}
 			}
 				
@@ -148,9 +142,9 @@ class SecurityPlugin extends Plugin {
 	public function beforeDispatch(Event $event, Dispatcher $dispatcher) {
 		$auth = $this->session->get ( 'auth' );
 		if (! $auth) {
-			$role = 'Guests';
+			$role = 'Visitantes';
 		} else {
-			$role = 'Users';
+			$role = 'Administradores';
 		}
 
 		$controller = $dispatcher->getControllerName ();

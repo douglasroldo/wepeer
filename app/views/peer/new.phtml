@@ -14,48 +14,54 @@
 
 <div class="page-header">
     <h1>
-        Cadastrar Peer
+        Cadastrar um novo Peer
     </h1>
 </div>
 
 <?php echo $this->getContent(); ?>
 
 <?php
-    echo $this->tag->form(
+echo $this->tag->form(
         array(
             "peer/create",
             "autocomplete" => "off",
             "class" => "form-horizontal"
         )
-    );
+);
 ?>
 
+<div id="dialog" title="Pesquisa">
+    <iframe src="http://localhost/wepeer/turma/index" width="100%" height="100%"></iframe>
+</div>
 <div class="form-group">
-    <label for="fieldTurmacodtur" class="col-sm-2 control-label">Código da turma :</label>
+    <label for="fieldTurmacodtur" class="col-sm-2 control-label">Turma :</label>
     <div class="col-sm-10">
         <?php echo $this->tag->textField(array("turmacodtur", "type" => "number", "class" => "form-control", "id" => "fieldTurmacodtur")) ?>
+    </div>
+    <div class="col-sm-offset-2 col-sm-10">
+        <a href="#" id="pesquisa">Pesquisar</a>
     </div>
 </div>
 
 <div class="form-group">
-    <label for="fieldDespee" class="col-sm-2 control-label">Nome do peer :</label>
+    <label for="fieldDespee" class="col-sm-2 control-label">Nome:</label>
     <div class="col-sm-10">
         <?php echo $this->tag->textField(array("despee", "size" => 30, "class" => "form-control", "id" => "fieldDespee")) ?>
     </div>
 </div>
 
 <div class="form-group">
-    <label for="fieldDasexepee" class="col-sm-2 control-label">Data de execução do peer : </label>
+    <label for="fieldDasexepee" class="col-sm-2 control-label">Data inicial: </label>
     <div class="col-sm-10">
-        <?php echo $this->tag->textField(array("dasexepee", "type" => "date", "class" => "form-control", "id" => "fieldDasexepee")) ?>
+        <?php echo $this->tag->dateField(array("dasexepee", "type" => "date", "class" => "form-control", "id" => "fieldDasexepee")) ?>
     </div>
 </div>
 
 
 <div class="form-group">
-    <label for="fieldDasfimpee" class="col-sm-2 control-label">Data do fim do peer : </label>
+    <label for="fieldDasfimpee" class="col-sm-2 control-label">Data final: </label>
     <div class="col-sm-10">
-        <?php echo $this->tag->textField(array("dasfimpee", "type" => "date", "class" => "form-control", "id" => "fieldDasfimpee")) ?>
+        <?php echo $this->tag->dateField(array("dasfimpee", "type" => "date", "class" => "form-control", "id" => "fieldDasfimpee")) ?>
     </div>
 </div>
 
@@ -67,3 +73,15 @@
 </div>
 
 <?php echo $this->tag->endForm(); ?>
+
+
+<script type="text/javascript">
+    $(document).ready(function () { // this initializes the dialog (and uses some common options that I do) 
+        $("#dialog").dialog({autoOpen: false, modal: true, show: "blind", hide: "blind"}); // next add the onclick handler 
+        $("#pesquisa").click(function () {
+            $("#dialog").dialog("open");
+            return false;
+        });
+    });
+
+</script>

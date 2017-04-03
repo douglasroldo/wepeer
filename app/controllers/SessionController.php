@@ -40,16 +40,16 @@ class SessionController extends ControllerBase {
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
 
-            $user = Pessoa::findFirst(array(
-                        "emapes = :email:",
-                //AND senpes = :password:",
+            $pessoa = Pessoa::findFirst(array(
+                        "emapes = :email: AND senpes = :password:",
                         'bind' => array(
-                            'email' => $email
+                            'email' => $email,
+                            'password' => md5($password)
                         )
-                    ));
-            if ($user != false) {
-                $this->_registerSession($user);
-                $this->flash->success('Welcome ' . $user->nompes);
+             ));
+            if ($pessoa != false) {
+                $this->_registerSession($pessoa);
+                $this->flash->success('Bem-vindo ' . $pessoa->nompes);
 
                 return $this->dispatcher->forward([
                             "controller" => "home",
@@ -57,7 +57,7 @@ class SessionController extends ControllerBase {
                         ]);
             }
 
-            $this->flash->error('Wrong email/password');
+            $this->flash->error('E-mail ou senha inválidos!');
         }
 
         return $this->dispatcher->forward([
@@ -73,7 +73,7 @@ class SessionController extends ControllerBase {
      */
     public function endAction() {
         $this->session->remove('auth');
-        $this->flash->success('Goodbye!');
+        $this->flash->success('Obrigado!');
 
         return $this->dispatcher->forward([
                     "controller" => "index",

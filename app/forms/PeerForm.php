@@ -5,14 +5,14 @@ use Phalcon\Forms\Element\Date;
 use Phalcon\Forms\Form;
 use Phalcon\Validation\Validator\PresenceOf;
 
-class PeerForm extends Form {
+class PessoaForm extends Form {
 
     /**
      * Initialize the products form
      */
     public function initialize($entity = null, $options = array()) {
 
-        // Name
+        // Turma
         $turma = new Text('turmacodtur');
         $turma->setLabel('Turma');
         $turma->setFilters(array('striptags', 'string'));
@@ -23,7 +23,7 @@ class PeerForm extends Form {
         ));
         $this->add($turma);
 
-        // Email
+        // Nome
         $nome = new Text('despee');
         $nome->setLabel('Nome');
         $nome->addValidators(array(
@@ -32,7 +32,7 @@ class PeerForm extends Form {
                     ))
         ));
         $this->add($nome);
-
+        // Data Inicial
         $datainicial = new Date('dasexepee');
         $datainicial->setLabel('Data inicial');
         $datainicial->addValidators(array(
@@ -41,7 +41,7 @@ class PeerForm extends Form {
                     ))
         ));
         $this->add($datainicial);
-        
+        //Data Final
         $datafinal = new Date('dasfimpee');
         $datafinal->setLabel('Data final');
         $datafinal->addValidators(array(

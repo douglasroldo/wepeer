@@ -5,7 +5,7 @@ use Phalcon\Forms\Element\Date;
 use Phalcon\Forms\Form;
 use Phalcon\Validation\Validator\PresenceOf;
 
-class PessoaForm extends Form {
+class PeerForm extends Form {
 
     /**
      * Initialize the products form
@@ -42,14 +42,18 @@ class PessoaForm extends Form {
         ));
         $this->add($datainicial);
         //Data Final
-        $datafinal = new Date('dasfimpee');
-        $datafinal->setLabel('Data final');
-        $datafinal->addValidators(array(
+        $dasfimpee = new Date('dasfimpee');
+        $dasfimpee->setLabel('Data final');
+        $dasfimpee->addValidators(array(
             new PresenceOf(array(
                 'message' => 'Data final é obrigatória!'
                     ))
         ));
-        $this->add($datafinal);
+        $this->add($dasfimpee);
+        //Data Cadastro
+        $datcadpee = new Text('datcadpee');
+        $datcadpee->setLabel('Data Cadastro');
+        $this->add($datcadpee);
     }
 
 }

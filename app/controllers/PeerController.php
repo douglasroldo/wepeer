@@ -16,7 +16,7 @@ class PeerController extends ControllerBase {
     public function indexAction() {
         //$this->persistent->parameters = null;
         //echo "Bem vindo ";
-        $this->view->form = new PessoaForm;
+        $this->view->form = new PeerForm;
     }
 
     /**
@@ -105,16 +105,17 @@ class PeerController extends ControllerBase {
                 'controller' => "peer",
                 'action' => 'index'
             ));
-
+            
             return;
         }
 
-        $form = new PessoaForm;
+        $form = new PeerForm;
         $peer = new Peer();
 
         // Validate the form
         $data = $this->request->getPost();
         if (!$form->isValid($data, $peer)) {
+            
             foreach ($form->getMessages() as $message) {
                 $this->flash->error($message);
             }
@@ -162,7 +163,7 @@ class PeerController extends ControllerBase {
         }
 
 
-        $form = new PessoaForm;
+        $form = new PeerForm;
         $peer = new Peer();
 
         /* $turmacodtur = $this->request->getPost("turmacodtur");

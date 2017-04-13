@@ -65,6 +65,13 @@ echo $this->tag->form(
     </div>
 </div>
 
+<div class="form-group">
+    <label for="fieldDatcadpee" class="col-sm-2 control-label">Data cadastro: </label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("datcadpee", "type" => "text", "class" => "form-control", "id" => "fieldDatcadpee", "value" => date("d/m/Y"), "readonly" => "readonly")) ?>
+    </div>
+</div>
+
 
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">

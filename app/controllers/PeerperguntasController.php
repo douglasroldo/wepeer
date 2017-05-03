@@ -108,10 +108,15 @@ class PeerperguntasController extends ControllerBase
         }
 
         $peerpergunta = new Peerperguntas();
-        $peerpergunta->perguntacodper = $this->request->getPost("perguntacodper");
-        $peerpergunta->peercodpee = $this->request->getPost("peercodpee");
-        $peerpergunta->ordpee = $this->request->getPost("ordpee");
-        $peerpergunta->obrirespeer = $this->request->getPost("obrirespeer");
+        $pergunta = $this->request->getPost("peerper");
+        $rescerta= $this->request->getPost("rescerta");
+        $resposta1= $this->request->getPost("resposta1");
+        $resposta2= $this->request->getPost("resposta2");
+        $resposta3= $this->request->getPost("resposta3");
+        $resposta4= $this->request->getPost("resposta4");
+        
+        echo "$pergunta, $rescerta, $resposta1, $resposta2, $resposta3, $resposta4";
+        exit;
         
 
         if (!$peerpergunta->save()) {

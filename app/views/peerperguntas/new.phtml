@@ -31,37 +31,47 @@
 ?>
 
 <div class="form-group">
-    <label for="fieldPerguntacodper" class="col-sm-2 control-label">Código da pergunta </label>
+    <label for="peerper" class="col-sm-2 control-label">Descrição da pergunta </label>
     <div class="col-sm-10">
-        <?php echo $this->tag->textField(array("perguntacodper", "type" => "number", "class" => "form-control", "id" => "fieldPerguntacodper")) ?>
+        <?php echo $this->tag->textArea(array("peerper",  "class" => "form-control", "id" => "peerper" )) ?>
     </div>
 </div>
-
 <div class="form-group">
-    <label for="fieldPeercodpee" class="col-sm-2 control-label">Código do peer </label>
-    <div class="col-sm-10">
-        <?php echo $this->tag->textField(array("peercodpee", "type" => "number", "class" => "form-control", "id" => "fieldPeercodpee")) ?>
+    <div class="col-sm-1">
+        <?php echo $this->tag->radioField(array("rescerta",  "id" => "rescerta", "value" => 1)) ?>
     </div>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("resposta1", "type" => "text", "class" => "form-control", "id" => "resposta1")) ?>
+    </div>        
 </div>
-
 <div class="form-group">
-    <label for="fieldOrdpee" class="col-sm-2 control-label">Ordem das perguntas </label>
-    <div class="col-sm-10">
-        <?php echo $this->tag->textField(array("ordpee", "type" => "number", "class" => "form-control", "id" => "fieldOrdpee")) ?>
+    <div class="col-sm-1">
+        <?php echo $this->tag->radioField(array("rescerta",  "id" => "rescerta", "value" => 2)) ?>
     </div>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("resposta2", "type" => "text", "class" => "form-control", "id" => "resposta2")) ?>
+    </div>        
 </div>
-
+ <div class="form-group">
+    <div class="col-sm-1">
+        <?php echo $this->tag->radioField(array("rescerta",  "id" => "rescerta", "value" => 3)) ?>
+    </div>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("resposta3", "type" => "text", "class" => "form-control", "id" => "resposta3")) ?>
+    </div>        
+</div>
 <div class="form-group">
-    <label for="fieldObrirespeer" class="col-sm-2 control-label">Obrigatoriedade das perguntas </label>
-    <div class="col-sm-10">
-        <?php echo $this->tag->textField(array("obrirespeer", "type" => "number", "class" => "form-control", "id" => "fieldObrirespeer")) ?>
+    <div class="col-sm-1">
+        <?php echo $this->tag->radioField(array("rescerta",  "id" => "rescerta", "value" => 4)) ?>
     </div>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("resposta4", "type" => "text", "class" => "form-control", "id" => "resposta4")) ?>
+    </div>        
 </div>
-
 
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-        <?php echo $this->tag->submitButton(array("Salvar", "class" => "btn btn-default")) ?>
+        <?php echo $this->tag->submitButton(array("Criar", "class" => "btn btn-default")) ?>
     </div>
 </div>
 

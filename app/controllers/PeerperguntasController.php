@@ -98,38 +98,52 @@ class PeerperguntasController extends ControllerBase
      */
     public function createAction()
     {
+        $id_pergunta;
+        
         if (!$this->request->isPost()) {
             $this->dispatcher->forward(array(
                 'controller' => "peerperguntas",
                 'action' => 'index'
             ));
-
             return;
         }
-
-        $peerpergunta = new Peerperguntas();
-        $pergunta = $this->request->getPost("peerper");
-        $rescerta= $this->request->getPost("rescerta");
-        $resposta1= $this->request->getPost("resposta1");
-        $resposta2= $this->request->getPost("resposta2");
-        $resposta3= $this->request->getPost("resposta3");
-        $resposta4= $this->request->getPost("resposta4");
         
-        echo "$pergunta, $rescerta, $resposta1, $resposta2, $resposta3, $resposta4";
-        exit;
-        
-
-        if (!$peerpergunta->save()) {
-            foreach ($peerpergunta->getMessages() as $message) {
-                $this->flash->error($message);
+        if($this->request->isPost()){
+            $pergunta = new Pergunta();
+            
+            $pergunta->desper = $this->request->getPost("peerper");
+            $pergunta->rescer = $this->request->getPost("rescerta");
+            if (!$pergunta->save()) {
+                foreach ($pergunta->getMessages() as $message) {
+                    $this->flash->error($message);
+                }
+            }else{
+               $id_pergunta = $pergunta->codper;
             }
-
-            $this->dispatcher->forward(array(
-                'controller' => "peerperguntas",
-                'action' => 'new'
-            ));
-
-            return;
+            
+               $opcao = new Opcao();
+               
+               $respostas = array(
+                   array(
+                    'desopc' => $this->request->getPost("resposta1"),
+                    'perguntacodper' => $id_pergunta   
+                   ),
+                   array(
+                    'desopc' => $this->request->getPost("resposta2"),
+                    'perguntacodper' => $id_pergunta   
+                   ),
+                   array(
+                    'desopc' => $this->request->getPost("resposta3"),
+                    'perguntacodper' => $id_pergunta   
+                   ),
+                   array(
+                    'desopc' => $this->request->getPost("resposta4"),
+                    'perguntacodper' => $id_pergunta   
+                   )
+               );
+               $opcao->save($respostas, $opcao);
+               
+     
         }
 
         $this->flash->success("peerpergunta was created successfully");
@@ -140,64 +154,7 @@ class PeerperguntasController extends ControllerBase
         ));
     }
 
-    /**
-     * Saves a peerpergunta edited
-     *
-     */
-    public function saveAction()
-    {
 
-        if (!$this->request->isPost()) {
-            $this->dispatcher->forward(array(
-                'controller' => "peerperguntas",
-                'action' => 'index'
-            ));
-
-            return;
-        }
-
-        $perguntacodper = $this->request->getPost("perguntacodper");
-        $peerpergunta = Peerperguntas::findFirstByperguntacodper($perguntacodper);
-
-        if (!$peerpergunta) {
-            $this->flash->error("peerpergunta does not exist " . $perguntacodper);
-
-            $this->dispatcher->forward(array(
-                'controller' => "peerperguntas",
-                'action' => 'index'
-            ));
-
-            return;
-        }
-
-        $peerpergunta->perguntacodper = $this->request->getPost("perguntacodper");
-        $peerpergunta->peercodpee = $this->request->getPost("peercodpee");
-        $peerpergunta->ordpee = $this->request->getPost("ordpee");
-        $peerpergunta->obrirespeer = $this->request->getPost("obrirespeer");
-        
-
-        if (!$peerpergunta->save()) {
-
-            foreach ($peerpergunta->getMessages() as $message) {
-                $this->flash->error($message);
-            }
-
-            $this->dispatcher->forward(array(
-                'controller' => "peerperguntas",
-                'action' => 'edit',
-                'params' => array($peerpergunta->perguntacodper)
-            ));
-
-            return;
-        }
-
-        $this->flash->success("peerpergunta was updated successfully");
-
-        $this->dispatcher->forward(array(
-            'controller' => "peerperguntas",
-            'action' => 'index'
-        ));
-    }
 
     /**
      * Deletes a peerpergunta

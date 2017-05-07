@@ -151,7 +151,7 @@ class PeerrespostasController extends ControllerBase
         $peerresposta = Peerrespostas::findFirstByalunocod_matricula($alunocod_matricula);
 
         if (!$peerresposta) {
-            $this->flash->error("peerresposta does not exist " . $alunocod_matricula);
+            $this->flash->error("Perguta Não existe " . $alunocod_matricula);
 
             $this->dispatcher->forward(array(
                 'controller' => "peerrespostas",
@@ -180,7 +180,7 @@ class PeerrespostasController extends ControllerBase
             return;
         }
 
-        $this->flash->success("peerresposta was updated successfully");
+        $this->flash->success("Pergunta foi atualizada com sucesso");
 
         $this->dispatcher->forward(array(
             'controller' => "peerrespostas",
@@ -197,7 +197,7 @@ class PeerrespostasController extends ControllerBase
     {
         $peerresposta = Peerrespostas::findFirstByalunocod_matricula($alunocod_matricula);
         if (!$peerresposta) {
-            $this->flash->error("peerresposta was not found");
+            $this->flash->error("Pergunta não foi encontrada");
 
             $this->dispatcher->forward(array(
                 'controller' => "peerrespostas",

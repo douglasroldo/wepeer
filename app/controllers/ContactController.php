@@ -63,7 +63,7 @@ class ContactController extends ControllerBase
             );
         }
 
-        $this->flash->success('Thanks, we will contact you in the next few hours');
+        $this->flash->success('Obrigado, entraremos em contato com você nas próximas horas');
 
         return $this->dispatcher->forward(
             [

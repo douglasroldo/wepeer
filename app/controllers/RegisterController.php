@@ -18,13 +18,15 @@ class RegisterController extends ControllerBase
      */
     public function indexAction()
     {
+
         $form = new RegisterForm;
 
         if ($this->request->isPost()) {
 
             $name = $this->request->getPost('name', array('string', 'striptags'));
-            $username = $this->request->getPost('username', 'alphanum');
             $email = $this->request->getPost('email', 'email');
+            $cpf = $this->request->getPost('cpf', array('string', 'striptags'));
+            $data_nas = $this->request->getPost('data_nas');
             $password = $this->request->getPost('password');
             $repeatPassword = $this->request->getPost('repeatPassword');
 
@@ -32,14 +34,14 @@ class RegisterController extends ControllerBase
                 $this->flash->error('Passwords are different');
                 return false;
             }
+            
+            $user = new Pessoa();
 
-            $user = new Users();
-            $user->username = $username;
-            $user->password = sha1($password);
-            $user->name = $name;
-            $user->email = $email;
-            $user->created_at = new Phalcon\Db\RawValue('now()');
-            $user->active = 'Y';
+            $user->senpes = md5($password);
+            $user->nompes = $name;
+            $user->emapes = $email;
+            $user->cpfpes = $cpf;
+            $user->datanaspes = $data_nas;
             if ($user->save() == false) {
                 foreach ($user->getMessages() as $message) {
                     $this->flash->error((string) $message);

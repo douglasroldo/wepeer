@@ -21,11 +21,22 @@
         </div>
 
         <div class="control-group">
-            {{ form.label('username', ['class': 'control-label']) }}
+            {{ form.label('cpf', ['class': 'control-label']) }}
             <div class="controls">
-                {{ form.render('username', ['class': 'form-control']) }}
+                {{ form.render('cpf', ['class': 'form-control']) }}
                 <p class="help-block">(required)</p>
-                <div class="alert alert-warning" id="username_alert">
+                <div class="alert alert-warning" id="cpf_alert">
+                    <strong>Warning!</strong> Please enter your desired user name
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            {{ form.label('data_nas', ['class': 'control-label']) }}
+            <div class="controls">
+                {{ form.render('data_nas', ['class': 'form-control']) }}
+                <p class="help-block">(required)</p>
+                <div class="alert alert-warning" id="data_nas_alert">
                     <strong>Warning!</strong> Please enter your desired user name
                 </div>
             </div>

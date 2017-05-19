@@ -50,7 +50,7 @@ class InvoicesController extends ControllerBase
                     $this->flash->error((string) $message);
                 }
             } else {
-                $this->flash->success('Your profile information was updated successfully');
+                $this->flash->success('As informações do seu perfil foram atualizadas com sucesso');
             }
         }
     }

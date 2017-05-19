@@ -110,9 +110,11 @@ class PeerperguntasController extends ControllerBase
         
         if($this->request->isPost()){
             $pergunta = new Pergunta();
-            
+            $opcao = new Opcao();
             $pergunta->desper = $this->request->getPost("peerper");
-            $pergunta->rescer = $this->request->getPost("rescerta");
+            $opcao->rescer = $this->request->getPost("rescerta");
+            
+    
             if (!$pergunta->save()) {
                 foreach ($pergunta->getMessages() as $message) {
                     $this->flash->error($message);
@@ -121,8 +123,23 @@ class PeerperguntasController extends ControllerBase
                $id_pergunta = $pergunta->codper;
             }
             
-               $opcao = new Opcao();
                
+               $opcao->desopc = $this->request->getPost("resposta1");
+               $opcao->perguntacodper = $id_pergunta;
+               $opcao->save();
+               $opcao = new Opcao();
+               $opcao->desopc = $this->request->getPost("resposta2");
+               $opcao->perguntacodper = $id_pergunta;
+               $opcao->save();
+               $opcao = new Opcao();
+               $opcao->desopc = $this->request->getPost("resposta3");
+               $opcao->perguntacodper = $id_pergunta;
+               $opcao->save();
+               $opcao = new Opcao();
+               $opcao->desopc = $this->request->getPost("resposta4");
+               $opcao->perguntacodper = $id_pergunta;
+               $opcao->save();
+               /**
                $respostas = array(
                    array(
                     'desopc' => $this->request->getPost("resposta1"),
@@ -142,7 +159,7 @@ class PeerperguntasController extends ControllerBase
                    )
                );
                $opcao->save($respostas, $opcao);
-               
+               **/
      
         }
 

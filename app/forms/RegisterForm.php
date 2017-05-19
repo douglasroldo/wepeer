@@ -22,17 +22,34 @@ class RegisterForm extends Form
         ));
         $this->add($name);
 
-        // Name
-        $name = new Text('username');
-        $name->setLabel('Username');
-        $name->setFilters(array('alpha'));
-        $name->addValidators(array(
+       
+        // Email
+        $data_nas = new Text('data_nas');
+        $data_nas->setLabel('Data de Nascimento');
+        $data_nas->setFilters('data_nas');
+        $data_nas->addValidators(array(
             new PresenceOf(array(
-                'message' => 'Please enter your desired user name'
+                'message' => 'Data Nascimento is required'
+            )),
+            new Email(array(
+                'message' => 'Data Nascimento is not valid'
             ))
         ));
-        $this->add($name);
-
+        $this->add($data_nas);
+        
+        $cpf = new Text('cpf');
+        $cpf->setLabel('CPF');
+        $cpf->setFilters('$cpf');
+        $cpf->addValidators(array(
+            new PresenceOf(array(
+                'message' => 'CPF is required'
+            )),
+            new Email(array(
+                'message' => 'CPF is not valid'
+            ))
+        ));
+        
+        $this->add($cpf);
         // Email
         $email = new Text('email');
         $email->setLabel('E-Mail');

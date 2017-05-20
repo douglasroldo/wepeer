@@ -98,7 +98,7 @@ class PeerperguntasController extends ControllerBase
      */
     public function createAction()
     {
-        $id_pergunta;
+        $id_pergunta = null;
         
         if (!$this->request->isPost()) {
             $this->dispatcher->forward(array(
@@ -110,11 +110,10 @@ class PeerperguntasController extends ControllerBase
         
         if($this->request->isPost()){
             $pergunta = new Pergunta();
-            $opcao = new Opcao();
-            $pergunta->desper = $this->request->getPost("peerper");
-            $opcao->rescer = $this->request->getPost("rescerta");
             
-    
+            $pergunta->desper = $this->request->getPost("peerper");
+            $pergunta->rescer = 0; 
+            
             if (!$pergunta->save()) {
                 foreach ($pergunta->getMessages() as $message) {
                     $this->flash->error($message);
@@ -123,22 +122,36 @@ class PeerperguntasController extends ControllerBase
                $id_pergunta = $pergunta->codper;
             }
             
-               
+               $opcao = new Opcao();
                $opcao->desopc = $this->request->getPost("resposta1");
                $opcao->perguntacodper = $id_pergunta;
                $opcao->save();
+               if ($this->request->getPost("rescerta") == 1) {
+                  $pergunta->rescer = $opcao->codopc; 
+               }
+               
                $opcao = new Opcao();
                $opcao->desopc = $this->request->getPost("resposta2");
                $opcao->perguntacodper = $id_pergunta;
                $opcao->save();
+                if ($this->request->getPost("rescerta") == 2) {
+                  $pergunta->rescer = $opcao->codopc; 
+               }
                $opcao = new Opcao();
                $opcao->desopc = $this->request->getPost("resposta3");
                $opcao->perguntacodper = $id_pergunta;
                $opcao->save();
+               if ($this->request->getPost("rescerta") == 3) {
+                  $pergunta->rescer = $opcao->codopc; 
+               }
                $opcao = new Opcao();
                $opcao->desopc = $this->request->getPost("resposta4");
                $opcao->perguntacodper = $id_pergunta;
                $opcao->save();
+                if ($this->request->getPost("rescerta") == 4) {
+                  $pergunta->rescer = $opcao->codopc; 
+               }
+               $pergunta->save();
                /**
                $respostas = array(
                    array(

@@ -2,7 +2,7 @@
 {{ content() }}
 
 <div class="page-header">
-    <h2>Register for INVO</h2>
+    <h2>Escreva-se no Wepeer</h2>
 </div>
 
 {{ form('register', 'id': 'registerForm', 'onbeforesubmit': 'return false') }}
@@ -13,9 +13,8 @@
             {{ form.label('name', ['class': 'control-label']) }}
             <div class="controls">
                 {{ form.render('name', ['class': 'form-control']) }}
-                <p class="help-block">(required)</p>
                 <div class="alert alert-warning" id="name_alert">
-                    <strong>Warning!</strong> Please enter your full name
+                    <strong>Warning!</strong> Por favor digite seu nome completo!
                 </div>
             </div>
         </div>
@@ -24,9 +23,8 @@
             {{ form.label('cpf', ['class': 'control-label']) }}
             <div class="controls">
                 {{ form.render('cpf', ['class': 'form-control']) }}
-                <p class="help-block">(required)</p>
                 <div class="alert alert-warning" id="cpf_alert">
-                    <strong>Warning!</strong> Please enter your desired user name
+                    <strong>Warning!</strong> Digite seu nome de usuário desejado
                 </div>
             </div>
         </div>
@@ -35,9 +33,8 @@
             {{ form.label('data_nas', ['class': 'control-label']) }}
             <div class="controls">
                 {{ form.render('data_nas', ['class': 'form-control']) }}
-                <p class="help-block">(required)</p>
                 <div class="alert alert-warning" id="data_nas_alert">
-                    <strong>Warning!</strong> Please enter your desired user name
+                    <strong>Warning!</strong> Digite a data de seu nascimento
                 </div>
             </div>
         </div>
@@ -46,9 +43,8 @@
             {{ form.label('email', ['class': 'control-label']) }}
             <div class="controls">
                 {{ form.render('email', ['class': 'form-control']) }}
-                <p class="help-block">(required)</p>
                 <div class="alert alert-warning" id="email_alert">
-                    <strong>Warning!</strong> Please enter your email
+                    <strong>Warning!</strong> Por favor introduza o seu e-mail
                 </div>
             </div>
         </div>
@@ -57,9 +53,9 @@
             {{ form.label('password', ['class': 'control-label']) }}
             <div class="controls">
                 {{ form.render('password', ['class': 'form-control']) }}
-                <p class="help-block">(minimum 8 characters)</p>
+                <p class="help-block">(Mínimo 8 caracteres)</p>
                 <div class="alert alert-warning" id="password_alert">
-                    <strong>Warning!</strong> Please provide a valid password
+                    <strong>Warning!</strong> Fornecer uma senha válida
                 </div>
             </div>
         </div>
@@ -69,14 +65,15 @@
             <div class="controls">
                 {{ password_field('repeatPassword', 'class': 'input-xlarge') }}
                 <div class="alert" id="repeatPassword_alert">
-                    <strong>Warning!</strong> The password does not match
+                    <strong>Warning!</strong> A senha não corresponde
                 </div>
             </div>
         </div>
+        
 
         <div class="form-actions">
-            {{ submit_button('Register', 'class': 'btn btn-primary', 'onclick': 'return SignUp.validate();') }}
-            <p class="help-block">By signing up, you accept terms of use and privacy policy.</p>
+            {{ submit_button('Enviar cadastro', 'class': 'btn btn-primary', 'onclick': 'return SignUp.validate();') }}
+            <p class="help-block">Ao se inscrever, você aceita termos de uso e política de privacidade.</p>
         </div>
 
     </fieldset>

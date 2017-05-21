@@ -42,7 +42,7 @@
         </ul>
 
         <div class="clearfix center">
-            {{ link_to('register', 'Sign Up', 'class': 'btn btn-primary btn-large btn-success') }}
+            {{ link_to('register', 'Se cadastrar', 'class': 'btn btn-primary btn-large btn-success') }}
         </div>
     </div>
 

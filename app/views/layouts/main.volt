@@ -18,6 +18,6 @@
     {{ content() }}
     <hr>
     <footer>
-        <p>&copy; WePeer 2016</p>
+        <p>&copy; WePeer 2017</p>
     </footer>
 </div>

@@ -8,14 +8,14 @@
 class SessionController extends ControllerBase {
 
     public function initialize() {
-        $this->tag->setTitle('Sign Up/Sign In');
+        $this->tag->setTitle('Cadastre-se / Entrar');
         parent::initialize();
     }
 
     public function indexAction() {
         if (!$this->request->isPost()) {
-            $this->tag->setDefault('email', 'demo@phalconphp.com');
-            $this->tag->setDefault('password', 'phalcon');
+            $this->tag->setDefault('email', '');
+            $this->tag->setDefault('password', '');
         }
     }
 

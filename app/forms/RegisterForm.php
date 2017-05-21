@@ -13,11 +13,11 @@ class RegisterForm extends Form
     {
         // Name
         $name = new Text('name');
-        $name->setLabel('Your Full Name');
+        $name->setLabel('Seu nome completo');
         $name->setFilters(array('striptags', 'string'));
         $name->addValidators(array(
             new PresenceOf(array(
-                'message' => 'Name is required'
+                'message' => 'Name é necessário'
             ))
         ));
         $this->add($name);
@@ -29,10 +29,10 @@ class RegisterForm extends Form
         $data_nas->setFilters('data_nas');
         $data_nas->addValidators(array(
             new PresenceOf(array(
-                'message' => 'Data Nascimento is required'
+                'message' => 'Data Nascimento é necessário'
             )),
             new Email(array(
-                'message' => 'Data Nascimento is not valid'
+                'message' => 'Data Nascimento não é válido'
             ))
         ));
         $this->add($data_nas);
@@ -42,10 +42,10 @@ class RegisterForm extends Form
         $cpf->setFilters('$cpf');
         $cpf->addValidators(array(
             new PresenceOf(array(
-                'message' => 'CPF is required'
+                'message' => 'CPF é necessario'
             )),
             new Email(array(
-                'message' => 'CPF is not valid'
+                'message' => 'CPF não é válido'
             ))
         ));
         
@@ -56,30 +56,30 @@ class RegisterForm extends Form
         $email->setFilters('email');
         $email->addValidators(array(
             new PresenceOf(array(
-                'message' => 'E-mail is required'
+                'message' => 'E-mail é necessário'
             )),
             new Email(array(
-                'message' => 'E-mail is not valid'
+                'message' => 'E-mail não é válido'
             ))
         ));
         $this->add($email);
 
         // Password
         $password = new Password('password');
-        $password->setLabel('Password');
+        $password->setLabel('Senha');
         $password->addValidators(array(
             new PresenceOf(array(
-                'message' => 'Password is required'
+                'message' => 'Senha é necessário'
             ))
         ));
         $this->add($password);
 
         // Confirm Password
         $repeatPassword = new Password('repeatPassword');
-        $repeatPassword->setLabel('Repeat Password');
+        $repeatPassword->setLabel('Confirmação da senha');
         $repeatPassword->addValidators(array(
             new PresenceOf(array(
-                'message' => 'Confirmation password is required'
+                'message' => 'A confirmação da sennha é obrigatoria'
             ))
         ));
         $this->add($repeatPassword);

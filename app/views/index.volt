@@ -8,7 +8,7 @@
  {{ stylesheet_link('css/jquery-ui-1.9.2.custom.min.css') }}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Your invoices">
-        <meta name="author" content="WePeer">
+        <meta name="author" content="Wepeer">
     </head>
     <body>
      <link rel="icon" type="image/ico" href="wepeer.ico"/>

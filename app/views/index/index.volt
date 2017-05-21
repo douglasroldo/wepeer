@@ -1,17 +1,17 @@
 
 {{ content() }}
+   <div class="col-md-6">
+    <img src="public/img/wepeer-splash.png">
+    </div>
 
-<div class="jumbotron">
-    <h1>Bem vindo ao WePeer!!</h1>
-     
-    
-</div>
 
 <div class="row">
+    
     <div class="col-md-4">
         <h2>O que é o WePeer ? </h2>
         <p>  É uma WebApp para ajudar na implementação da metodologia ativa de ensino Peer Intruction</p>
     </div>
+    
      <div class="col-md-4">
         <h2>O que são Metodologias ativas? </h2>
         <p> É uma concepção educacional que coloca os estudantes da graduação como principais agentes de seu aprendizado. Nela, o estímulo à crítica e reflexão são incentivados pelo professor que conduz a aula, mas o centro desse processo é, de fato, o próprio aluno</p>

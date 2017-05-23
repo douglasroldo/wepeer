@@ -40,11 +40,11 @@ class Elements extends Component {
                     'caption' => ' Profesor',
                     'action' => 'new'
                 ),
-                array(
+                /*array(
                     'controller' => 'disciplina',
                     'caption' => ' Disciplina',
                     'action' => 'new'
-                ),
+                ),*/
                 array(
                     'controller' => 'turma',
                     'caption' => ' Turma',
@@ -77,11 +77,11 @@ class Elements extends Component {
                     'caption' => ' Profesor',
                     'action' => 'search'
                 ),
-                array(
+                /*array(
                     'controller' => 'disciplina',
                     'caption' => ' Disciplina',
                     'action' => 'search'
-                ),
+                ),*/
                 array(
                     'controller' => 'turma',
                     'caption' => ' Turma',

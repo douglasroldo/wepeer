@@ -61,7 +61,7 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="repeatPassword">Repeat Password</label>
+            <label class="control-label" for="repeatPassword">Confirmar Senha</label>
             <div class="controls">
                 {{ password_field('repeatPassword', 'class': 'input-xlarge') }}
                 <div class="alert" id="repeatPassword_alert">
@@ -73,7 +73,6 @@
 
         <div class="form-actions">
             {{ submit_button('Enviar cadastro', 'class': 'btn btn-primary', 'onclick': 'return SignUp.validate();') }}
-            <p class="help-block">Ao se inscrever, você aceita termos de uso e política de privacidade.</p>
         </div>
 
     </fieldset>

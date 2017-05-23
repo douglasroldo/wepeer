@@ -7,21 +7,19 @@
 
 <div class="row">
     
-    <div class="col-md-4">
-        <h2>O que é o WePeer ? </h2>
-        <p>  É uma WebApp para ajudar na implementação da metodologia ativa de ensino Peer Intruction</p>
+    <div class="col-md-3">
+        <h2>O que é o WePeer? </h2>
+        <p align="justify">  É um site para ajudar na implementação da metodologia ativa de ensino Peer Intruction</p>
     </div>
     
-     <div class="col-md-4">
+     <div class="col-md-3">
         <h2>O que são Metodologias ativas? </h2>
-        <p> É uma concepção educacional que coloca os estudantes da graduação como principais agentes de seu aprendizado. Nela, o estímulo à crítica e reflexão são incentivados pelo professor que conduz a aula, mas o centro desse processo é, de fato, o próprio aluno</p>
+        <p align="justify"> É uma concepção educacional que coloca os estudantes da graduação como principais agentes de seu aprendizado. Nela, o estímulo à crítica e reflexão são incentivados pelo professor que conduz a aula, mas o centro desse processo é, de fato, o próprio aluno</p>
     </div>
-    <div class="col-md-4">
-        <h2>Ele tem design responsivo</h2>
-        <p>Este site é acesivel de qualquer dispositivo seja um notebook,smartphone e tablet, independente da resolução ou capacidade de cor ele se adapta automaticamente para o uso.<p>
+     <div class="col-md-3">
+        <h2>O que é Peer Intruction? </h2>
+        <p align="justify"> É uma metodologia ativa onde caracteriza-se pela colocação de problemas ao mesmo tempo difíceis, complexos, desafiadores e úteis, ou seja, centrados na realidade dos estudantes, com algum tipo de significado para esses estudantes.</p>
     </div>
-    <div class="col-md-4">
-        <h2></h2>
-        <p></p>
-    </div>
+    
+    
 </div>

@@ -5,18 +5,18 @@
 
     <div class="col-md-6">
         <div class="page-header">
-            <h2>Log In</h2>
+            <h2>Fazer Login</h2>
         </div>
         {{ form('session/start', 'role': 'form') }}
             <fieldset>
                 <div class="form-group">
-                    <label for="email">Username/Email</label>
+                    <label for="email">Email do Usuário</label>
                     <div class="controls">
                         {{ text_field('email', 'class': "form-control") }}
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password">Senha</label>
                     <div class="controls">
                         {{ password_field('password', 'class': "form-control") }}
                     </div>
@@ -36,13 +36,12 @@
 
         <p>Criar uma conta oferece as seguintes vantagens:</p>
         <ul>
-            <li>Create, track and export your invoices online</li>
-            <li>Gain critical insights into how your business is doing</li>
-            <li>Stay informed about promotions and special packages</li>
+            <li>Criação de peers </li>
+            <li>Poderá responder peers ja cadastrados</li>
         </ul>
 
         <div class="clearfix center">
-            {{ link_to('register', 'Se cadastrar', 'class': 'btn btn-primary btn-large btn-success') }}
+            {{ link_to('register', 'Cadastrar-se', 'class': 'btn btn-primary btn-large btn-success') }}
         </div>
     </div>
 

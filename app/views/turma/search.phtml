@@ -16,7 +16,7 @@
 </div>
 
 <div class="page-header">
-    <h1>Search result</h1>
+    <h1>Relatorio de turmas </h1>
 </div>
 
 <?php echo $this->getContent(); ?>
@@ -25,10 +25,10 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Alunocod Of Matricula</th>
-            <th>Profesorpessoacodigo</th>
-            <th>Codtur</th>
-            <th>Destur</th>
+             
+            <th>Código do professor</th>
+            <th>Código da turma</th>
+            <th>Descrição da turma</th>
 
                 <th></th>
                 <th></th>
@@ -37,7 +37,7 @@
         <tbody>
         <?php foreach ($page->items as $turma): ?>
             <tr>
-                <td><?php echo $turma->alunocod_matricula ?></td>
+            
             <td><?php echo $turma->profesorpessoacodigo ?></td>
             <td><?php echo $turma->codtur ?></td>
             <td><?php echo $turma->destur ?></td>

@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">WePeer</a>
+            <a class="navbar-brand" href="#">Wepeer</a>
         </div>
         {{ elements.getMenu() }}
     </div>
@@ -19,5 +19,6 @@
     <hr>
     <footer>
         <p>&copy; WePeer 2017</p>
+        
     </footer>
 </div>

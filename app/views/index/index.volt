@@ -1,7 +1,7 @@
 
 {{ content() }}
-   <div class="col-md-6">
-    <img src="public/img/wepeer-splash.png">
+   <div class="col-md-5">
+    <img src="public/img/wepeer-splash.png" class="img-responsive img-rounded" alt="Imagem Responsiva">
     </div>
 
 

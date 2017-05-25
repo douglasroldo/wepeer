@@ -52,7 +52,7 @@ class SessionController extends ControllerBase {
                 $this->flash->success('Bem-vindo ' . $pessoa->nompes);
 
                 return $this->dispatcher->forward([
-                            "controller" => "home",
+                            "controller" => "peer",
                             "action" => "index"
                         ]);
             }
@@ -76,7 +76,7 @@ class SessionController extends ControllerBase {
         $this->flash->success('Obrigado!');
 
         return $this->dispatcher->forward([
-                    "controller" => "index",
+                    "controller" => "peer",
                     "action" => "index"
                 ]);
     }

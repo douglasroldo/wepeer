@@ -2,70 +2,34 @@
 /**
  * @var \Phalcon\Mvc\View\Engine\Php $this
  */
-?>
 
+?>
+<?php use Phalcon\Tag; ?>
 <div class="page-header">
     <h1>
-        Peer
+        Peer ativos para reponder!
     </h1>
-    <p>
-        <?php echo $this->tag->linkTo(array("peer/new", "Criar peer")) ?>
-    </p>
+<?php echo $this->getContent(); ?>
+
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+             <th>Descrição do peer</th>
+            <th>Data da execução</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($page->items as $peer): ?>
+            <tr>
+            <td><?php echo $peer->despee ?></td>
+            <td><?php echo $peer->dasexepee ?></td>
+    
+
+                <td><?php echo $this->tag->linkTo(array("peer/edit/" . $peer->turmacodtur, "Responder")); ?></td>
+                <td><?php echo $this->tag->linkTo(array("peer/delete/" . $peer->turmacodtur, "Deletar")); ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
 </div>
-
-<?php echo $this->getContent() ?>
-
-<?php
-    echo $this->tag->form(
-        array(
-            "peer/search",
-            "autocomplete" => "off",
-            "class" => "form-horizontal"
-        )
-    );
-?>
-
-<div class="form-group">
-    <label for="fieldTurmacodtur" class="col-sm-2 control-label">Código da turma </label>
-    <div class="col-sm-10">
-        <?php echo $this->tag->textField(array("turmacodtur", "type" => "number", "class" => "form-control", "id" => "fieldTurmacodtur")) ?>
-    </div>
-</div>
-
-<div class="form-group">
-    <label for="fieldCodpee" class="col-sm-2 control-label">Código da pessoa </label>
-    <div class="col-sm-10">
-        <?php echo $this->tag->textField(array("codpee", "type" => "number", "class" => "form-control", "id" => "fieldCodpee")) ?>
-    </div>
-</div>
-
-<div class="form-group">
-    <label for="fieldDespee" class="col-sm-2 control-label">Nome da pessoa </label>
-    <div class="col-sm-10">
-        <?php echo $this->tag->textField(array("despee", "size" => 30, "class" => "form-control", "id" => "fieldDespee")) ?>
-    </div>
-</div>
-
-
-<div class="form-group">
-    <label for="fieldDasexepee" class="col-sm-2 control-label">Data de execução do peer </label>
-    <div class="col-sm-10">
-        <?php echo $this->tag->textField(array("dasexepee", "type" => "date", "class" => "form-control", "id" => "fieldDasexepee")) ?>
-    </div>
-</div>
-
-<div class="form-group">
-    <label for="fieldDasfimpee" class="col-sm-2 control-label">Data do fim do peer </label>
-    <div class="col-sm-10">
-        <?php echo $this->tag->textField(array("dasfimpee", "type" => "date", "class" => "form-control", "id" => "fieldDasfimpee")) ?>
-    </div>
-</div>
-
-
-<div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-        <?php echo $this->tag->submitButton(array("Pesquisar", "class" => "btn btn-default")) ?>
-    </div>
-</div>
-
-<?php echo $this->tag->endForm(); ?>

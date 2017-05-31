@@ -12,7 +12,26 @@ class PeerAlunoController extends ControllerBase
     public function indexAction()
     {
         $this->persistent->parameters = null;
-                
+        //Aqui iremos puxar as informaçoes do banco de dados...
+        
+    }
+
+    public function responderAction($idpeer)
+    {
+       
+        $perguntas = Pergunta::find(["codpee = $idpeer", "order" => "codper"]);
+        foreach ($perguntas as $pergunta){
+            $idper = $pergunta->codper;
+            echo  $idper . " - " . $pergunta->desper. "<br/>";
+            
+            $opcoes = Opcao::find(["perguntacodper = $idper", "order" => "codopc"]);
+            foreach ($opcoes as $opcao){
+                echo $opcao->desopc . "<p/>";   
+            }
+            echo "<hr/>";
+        }
+       
+        
     }
 
     /**

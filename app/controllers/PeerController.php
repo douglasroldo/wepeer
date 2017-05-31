@@ -16,13 +16,46 @@ class PeerController extends ControllerBase {
     public function indexAction() {
         //$this->persistent->parameters = null;
         //echo "Bem vindo ";
-        $this->view->form = new PeerForm;
+                $numberPage = 1;
+        if ($this->request->isPost()) {
+            $query = Criteria::fromInput($this->di, 'Peer', $_POST);
+            $this->persistent->parameters = $query->getParams();
+        } else {
+            $numberPage = $this->request->getQuery("page", "int");
+        }
+
+        $parameters = $this->persistent->parameters;
+        if (!is_array($parameters)) {
+            $parameters = array();
+        }
+        $parameters ["order"] = "turmacodtur";
+
+        $peer = Peer::find($parameters);
+        if (count($peer) == 0) {
+            $this->flash->notice("A busca não encontrou nenhum peer");
+
+            $this->dispatcher->forward(array(
+                "controller" => "index",
+                "action" => "index"
+            ));
+
+            return;
+        }
+
+        $paginator = new Paginator(array(
+            'data' => $peer,
+            'limit' => 10,
+            'page' => $numberPage
+        ));
+        
+        $this->view->page = $paginator->getPaginate();
     }
 
     /**
      * Searches for peer
      */
     public function searchAction() {
+
         $numberPage = 1;
         if ($this->request->isPost()) {
             $query = Criteria::fromInput($this->di, 'Peer', $_POST);

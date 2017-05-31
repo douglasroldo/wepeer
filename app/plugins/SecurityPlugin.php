@@ -38,7 +38,7 @@ class SecurityPlugin extends Plugin {
 			// Recursos da área privada
 			$privateResources = array (
 					'peer' => array (
-							'index','search','new','edit','save','create','delete'
+							'index','search','new','edit','save','create','delete','reponder'
 					),
 					'aluno' => array (
 							'index','search','new','edit','save','create','delete'
@@ -56,7 +56,7 @@ class SecurityPlugin extends Plugin {
 							'index','search','new','edit','save','create','delete'
 					),
 					'peer_aluno' => array (
-							'index','search','new','edit','save','create','delete'
+							'index','search','new','edit','save','create','delete','responder'
 					),
 					'peerrespostas' => array (
 							'index','search','new','edit','save','create','delete'

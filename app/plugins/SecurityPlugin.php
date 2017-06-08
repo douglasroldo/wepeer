@@ -55,7 +55,7 @@ class SecurityPlugin extends Plugin {
 					'matriz' => array (
 							'index','search','new','edit','save','create','delete'
 					),
-					'peer_aluno' => array (
+					'peeraluno' => array (
 							'index','search','new','edit','save','create','delete','responder'
 					),
 					'peerrespostas' => array (

@@ -22,7 +22,6 @@ class PeerForm extends Form {
                     ))
         ));
         $this->add($turma);
-
         // Nome
         $nome = new Text('despee');
         $nome->setLabel('Nome');

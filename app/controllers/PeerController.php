@@ -69,7 +69,6 @@ class PeerController extends ControllerBase {
             $parameters = array();
         }
         $parameters ["order"] = "turmacodtur";
-
         $peer = Peer::find($parameters);
         if (count($peer) == 0) {
             $this->flash->notice("A busca não encontrou nenhum peer");

@@ -38,7 +38,7 @@ class PeerAluno extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'peer_aluno';
+        return 'peeraluno';
     }
 
     /**

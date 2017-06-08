@@ -26,6 +26,11 @@ class Elements extends Component {
                     'action' => 'new'
                 ),
                 array(
+                    'controller' => 'peerperguntas',
+                    'caption' => ' Pergunta',
+                    'action' => 'new'
+                ),
+                array(
                     'controller' => 'pessoa',
                     'caption' => ' Pessoa',
                     'action' => 'new'
@@ -60,6 +65,11 @@ class Elements extends Component {
                 array(
                     'controller' => 'peer',
                     'caption' => ' Peer',
+                    'action' => 'search'
+                ),
+               array(
+                    'controller' => 'peerperguntas',
+                    'caption' => ' Perguntas',
                     'action' => 'search'
                 ),
                 array(

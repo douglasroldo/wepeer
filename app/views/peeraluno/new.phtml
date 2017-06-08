@@ -7,14 +7,14 @@
 <div class="row">
     <nav>
         <ul class="pager">
-            <li class="previous"><?php echo $this->tag->linkTo(array("peer_aluno", "Voltar")) ?></li>
+            <li class="previous"><?php echo $this->tag->linkTo(array("peeraluno", "Voltar")) ?></li>
         </ul>
     </nav>
 </div>
 
 <div class="page-header">
     <h1>
-        Editar Peer Aluno
+        Criar Peer Aluno
     </h1>
 </div>
 
@@ -23,7 +23,7 @@
 <?php
     echo $this->tag->form(
         array(
-            "peer_aluno/save",
+            "peeraluno/create",
             "autocomplete" => "off",
             "class" => "form-horizontal"
         )
@@ -31,14 +31,14 @@
 ?>
 
 <div class="form-group">
-    <label for="fieldPeercodpee" class="col-sm-2 control-label">Código do peer </label>
+    <label for="fieldPeercodpee" class="col-sm-2 control-label">código do peer </label>
     <div class="col-sm-10">
         <?php echo $this->tag->textField(array("peercodpee", "type" => "number", "class" => "form-control", "id" => "fieldPeercodpee")) ?>
     </div>
 </div>
 
 <div class="form-group">
-    <label for="fieldAlunocodMatricula" class="col-sm-2 control-label">Código da matricula do aluno </label>
+    <label for="fieldAlunocodMatricula" class="col-sm-2 control-label">Código da matricula do aluno</label>
     <div class="col-sm-10">
         <?php echo $this->tag->textField(array("alunocod_matricula", "type" => "number", "class" => "form-control", "id" => "fieldAlunocodMatricula")) ?>
     </div>
@@ -51,8 +51,6 @@
     </div>
 </div>
 
-
-<?php echo $this->tag->hiddenField("id") ?>
 
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">

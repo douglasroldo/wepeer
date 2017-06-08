@@ -1,0 +1,42 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+<div class="page-header">
+    <h1>
+        Peer Aluno
+    </h1>
+</div>
+<?php echo $this->getContent(); ?> 
+<?php
+echo $this->tag->form(
+        array(
+            "peeraluno/search",
+            "autocomplete" => "off",
+            "class" => "form-horizontal"
+        )
+);
+
+foreach ($perguntas as $pergunta) {
+
+    echo $pergunta->desper . "<br/>";
+    foreach ($pergunta->opcoes as $opcao) {
+        echo Phalcon\Tag::radioField(
+                ["rescerta",
+                    "value" => "codopc",
+        ]);
+
+        echo $opcao->desopc . "<p/>";
+    }
+    echo "<hr/>";
+}
+?>
+<?php echo $this->tag->endForm(); ?>
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <?php echo $this->tag->submitButton(array("Responder", "class" => "btn btn-default")) ?>
+    </div>
+</div>
+

@@ -1,44 +1,52 @@
 <?php
- 
+
 use Phalcon\Mvc\Model\Criteria;
 use Phalcon\Paginator\Adapter\Model as Paginator;
 
+class PeerAlunoController extends ControllerBase {
 
-class PeerAlunoController extends ControllerBase
-{
     /**
      * Index action
      */
-    public function indexAction()
-    {
-        $this->persistent->parameters = null;
-        //Aqui iremos puxar as informaçoes do banco de dados...
-        
-    }
+    public function indexAction($idpeer) {
 
-    public function responderAction($idpeer)
-    {
-       
+        // $this->persistent->parameters = null;
+
+
         $perguntas = Pergunta::find(["codpee = $idpeer", "order" => "codper"]);
-        foreach ($perguntas as $pergunta){
-            $idper = $pergunta->codper;
-            echo  $idper . " - " . $pergunta->desper. "<br/>";
-            
-            $opcoes = Opcao::find(["perguntacodper = $idper", "order" => "codopc"]);
-            foreach ($opcoes as $opcao){
-                echo $opcao->desopc . "<p/>";   
-            }
-            echo "<hr/>";
+
+        $perguntasComOpcao = array();
+        foreach ($perguntas as $pergunta) {
+            $pergunta->opcoes = Opcao::find(["perguntacodper = $pergunta->codper", "order" => "codopc"]);
+            $perguntasComOpcao[] = $pergunta;
         }
-       
-        
+
+        $this->view->setParamToView(["pergunta" => $perguntasComOpcao]);
+    }
+    
+    /**
+     * Index action
+     */
+    public function responderAction($idpeer) {
+
+        // $this->persistent->parameters = null;
+
+
+        $perguntas = Pergunta::find(["codpee = $idpeer", "order" => "codper"]);
+
+        $perguntasComOpcao = array();
+        foreach ($perguntas as $pergunta) {
+            $pergunta->opcoes = Opcao::find(["perguntacodper = $pergunta->codper", "order" => "codopc"]);
+            $perguntasComOpcao[] = $pergunta;
+        }
+
+        $this->view->perguntas = $perguntasComOpcao;
     }
 
     /**
-     * Searches for peer_aluno
+     * Searches for peeraluno
      */
-    public function searchAction()
-    {
+    public function searchAction() {
         $numberPage = 1;
         if ($this->request->isPost()) {
             $query = Criteria::fromInput($this->di, 'PeerAluno', $_POST);
@@ -53,12 +61,12 @@ class PeerAlunoController extends ControllerBase
         }
         $parameters["order"] = "peercodpee";
 
-        $peer_aluno = PeerAluno::find($parameters);
-        if (count($peer_aluno) == 0) {
-            $this->flash->notice("The search did not find any peer_aluno");
+        $peeraluno = PeerAluno::find($parameters);
+        if (count($peeraluno) == 0) {
+            $this->flash->notice("The search did not find any peeraluno");
 
             $this->dispatcher->forward(array(
-                "controller" => "peer_aluno",
+                "controller" => "peeraluno",
                 "action" => "index"
             ));
 
@@ -66,8 +74,8 @@ class PeerAlunoController extends ControllerBase
         }
 
         $paginator = new Paginator(array(
-            'data' => $peer_aluno,
-            'limit'=> 10,
+            'data' => $peeraluno,
+            'limit' => 10,
             'page' => $numberPage
         ));
 
@@ -77,92 +85,87 @@ class PeerAlunoController extends ControllerBase
     /**
      * Displays the creation form
      */
-    public function newAction()
-    {
-
+    public function newAction() {
+        
     }
 
     /**
-     * Edits a peer_aluno
+     * Edits a peeraluno
      *
      * @param string $peercodpee
      */
-    public function editAction($peercodpee)
-    {
+    public function editAction($peercodpee) {
         if (!$this->request->isPost()) {
 
-            $peer_aluno = PeerAluno::findFirstBypeercodpee($peercodpee);
-            if (!$peer_aluno) {
-                $this->flash->error("peer_aluno was not found");
+            $peeraluno = PeerAluno::findFirstBypeercodpee($peercodpee);
+            if (!$peeraluno) {
+                $this->flash->error("peeraluno was not found");
 
                 $this->dispatcher->forward(array(
-                    'controller' => "peer_aluno",
+                    'controller' => "peeraluno",
                     'action' => 'index'
                 ));
 
                 return;
             }
 
-            $this->view->peercodpee = $peer_aluno->peercodpee;
+            $this->view->peercodpee = $peeraluno->peercodpee;
 
-            $this->tag->setDefault("peercodpee", $peer_aluno->peercodpee);
-            $this->tag->setDefault("alunocod_matricula", $peer_aluno->alunocod_matricula);
-            $this->tag->setDefault("datexecpeer", $peer_aluno->datexecpeer);
-            
+            $this->tag->setDefault("peercodpee", $peeraluno->peercodpee);
+            $this->tag->setDefault("alunocod_matricula", $peeraluno->alunocod_matricula);
+            $this->tag->setDefault("datexecpeer", $peeraluno->datexecpeer);
         }
     }
 
     /**
-     * Creates a new peer_aluno
+     * Creates a new peeraluno
      */
-    public function createAction()
-    {
+    public function createAction() {
         if (!$this->request->isPost()) {
             $this->dispatcher->forward(array(
-                'controller' => "peer_aluno",
+                'controller' => "peeraluno",
                 'action' => 'index'
             ));
 
             return;
         }
 
-        $peer_aluno = new PeerAluno();
-        $peer_aluno->peercodpee = $this->request->getPost("peercodpee");
-        $peer_aluno->alunocod_matricula = $this->request->getPost("alunocod_matricula");
-        $peer_aluno->datexecpeer = $this->request->getPost("datexecpeer");
-        
+        $peeraluno = new PeerAluno();
+        $peeraluno->peercodpee = $this->request->getPost("peercodpee");
+        $peeraluno->alunocod_matricula = $this->request->getPost("alunocod_matricula");
+        $peeraluno->datexecpeer = $this->request->getPost("datexecpeer");
 
-        if (!$peer_aluno->save()) {
-            foreach ($peer_aluno->getMessages() as $message) {
+
+        if (!$peeraluno->save()) {
+            foreach ($peeraluno->getMessages() as $message) {
                 $this->flash->error($message);
             }
 
             $this->dispatcher->forward(array(
-                'controller' => "peer_aluno",
+                'controller' => "peeraluno",
                 'action' => 'new'
             ));
 
             return;
         }
 
-        $this->flash->success("peer_aluno was created successfully");
+        $this->flash->success("peeraluno was created successfully");
 
         $this->dispatcher->forward(array(
-            'controller' => "peer_aluno",
+            'controller' => "peeraluno",
             'action' => 'index'
         ));
     }
 
     /**
-     * Saves a peer_aluno edited
+     * Saves a peeraluno edited
      *
      */
-    public function saveAction()
-    {
+    public function saveAction() {
 
         if (!$this->request->isPost()) {
             $this->dispatcher->forward(array(
-                'controller' => "peer_aluno",
+                'controller' => "peeraluno",
                 'action' => 'index'
             ));
 
@@ -170,84 +173,83 @@ class PeerAlunoController extends ControllerBase
         }
 
         $peercodpee = $this->request->getPost("peercodpee");
-        $peer_aluno = PeerAluno::findFirstBypeercodpee($peercodpee);
+        $peeraluno = PeerAluno::findFirstBypeercodpee($peercodpee);
 
-        if (!$peer_aluno) {
-            $this->flash->error("peer_aluno does not exist " . $peercodpee);
+        if (!$peeraluno) {
+            $this->flash->error("peeraluno does not exist " . $peercodpee);
 
             $this->dispatcher->forward(array(
-                'controller' => "peer_aluno",
+                'controller' => "peeraluno",
                 'action' => 'index'
             ));
 
             return;
         }
 
-        $peer_aluno->peercodpee = $this->request->getPost("peercodpee");
-        $peer_aluno->alunocod_matricula = $this->request->getPost("alunocod_matricula");
-        $peer_aluno->datexecpeer = $this->request->getPost("datexecpeer");
-        
+        $peeraluno->peercodpee = $this->request->getPost("peercodpee");
+        $peeraluno->alunocod_matricula = $this->request->getPost("alunocod_matricula");
+        $peeraluno->datexecpeer = $this->request->getPost("datexecpeer");
 
-        if (!$peer_aluno->save()) {
 
-            foreach ($peer_aluno->getMessages() as $message) {
+        if (!$peeraluno->save()) {
+
+            foreach ($peeraluno->getMessages() as $message) {
                 $this->flash->error($message);
             }
 
             $this->dispatcher->forward(array(
-                'controller' => "peer_aluno",
+                'controller' => "peeraluno",
                 'action' => 'edit',
-                'params' => array($peer_aluno->peercodpee)
+                'params' => array($peeraluno->peercodpee)
             ));
 
             return;
         }
 
-        $this->flash->success("peer_aluno was updated successfully");
+        $this->flash->success("peeraluno was updated successfully");
 
         $this->dispatcher->forward(array(
-            'controller' => "peer_aluno",
+            'controller' => "peeraluno",
             'action' => 'index'
         ));
     }
 
     /**
-     * Deletes a peer_aluno
+     * Deletes a peeraluno
      *
      * @param string $peercodpee
      */
-    public function deleteAction($peercodpee)
-    {
-        $peer_aluno = PeerAluno::findFirstBypeercodpee($peercodpee);
-        if (!$peer_aluno) {
-            $this->flash->error("peer_aluno was not found");
+    public function deleteAction($peercodpee) {
+        $peeraluno = PeerAluno::findFirstBypeercodpee($peercodpee);
+        if (!$peeraluno) {
+            $this->flash->error("peeraluno was not found");
 
             $this->dispatcher->forward(array(
-                'controller' => "peer_aluno",
+                'controller' => "peeraluno",
                 'action' => 'index'
             ));
 
             return;
         }
 
-        if (!$peer_aluno->delete()) {
+        if (!$peeraluno->delete()) {
 
-            foreach ($peer_aluno->getMessages() as $message) {
+            foreach ($peeraluno->getMessages() as $message) {
                 $this->flash->error($message);
             }
 
             $this->dispatcher->forward(array(
-                'controller' => "peer_aluno",
+                'controller' => "peeraluno",
                 'action' => 'search'
             ));
 
             return;
         }
 
-        $this->flash->success("peer_aluno was deleted successfully");
+        $this->flash->success("peeraluno was deleted successfully");
 
         $this->dispatcher->forward(array(
-            'controller' => "peer_aluno",
+            'controller' => "peeraluno",
             'action' => "index"
         ));
     }

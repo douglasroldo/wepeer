@@ -27,7 +27,7 @@ foreach ($perguntas as $pergunta) {
                 ["rescerta",
                     "value" => "codopc",
         ]);
-
+        echo("\t");
         echo $opcao->desopc . "<p/>";
     }
     echo "<hr/>";
@@ -35,8 +35,8 @@ foreach ($perguntas as $pergunta) {
 ?>
 <?php echo $this->tag->endForm(); ?>
 <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-        <?php echo $this->tag->submitButton(array("Responder", "class" => "btn btn-default")) ?>
+  <div class="col-sm-offset-2 col-sm-10">
+     <?php echo $this->tag->submitButton(array("Responder", "class" => "btn btn-default")) ?>
     </div>
 </div>
 

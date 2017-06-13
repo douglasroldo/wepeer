@@ -1,24 +1,21 @@
 <?php
- 
+
 use Phalcon\Mvc\Model\Criteria;
 use Phalcon\Paginator\Adapter\Model as Paginator;
 
+class PeerperguntasController extends ControllerBase {
 
-class PeerperguntasController extends ControllerBase
-{
     /**
      * Index action
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $this->persistent->parameters = null;
     }
 
     /**
      * Searches for peerperguntas
      */
-    public function searchAction()
-    {
+    public function searchAction() {
         $numberPage = 1;
         if ($this->request->isPost()) {
             $query = Criteria::fromInput($this->di, 'Peerperguntas', $_POST);
@@ -47,7 +44,7 @@ class PeerperguntasController extends ControllerBase
 
         $paginator = new Paginator(array(
             'data' => $peerperguntas,
-            'limit'=> 10,
+            'limit' => 10,
             'page' => $numberPage
         ));
 
@@ -57,9 +54,9 @@ class PeerperguntasController extends ControllerBase
     /**
      * Displays the creation form
      */
-    public function newAction()
-    {
-
+    public function newAction() {
+        $peer = Peer::find([]);
+        $this->view->peer = $peer;
     }
 
     /**
@@ -67,8 +64,7 @@ class PeerperguntasController extends ControllerBase
      *
      * @param string $perguntacodper
      */
-    public function editAction($perguntacodper)
-    {
+    public function editAction($perguntacodper) {
         if (!$this->request->isPost()) {
 
             $peerpergunta = Peerperguntas::findFirstByperguntacodper($perguntacodper);
@@ -89,17 +85,15 @@ class PeerperguntasController extends ControllerBase
             $this->tag->setDefault("peercodpee", $peerpergunta->peercodpee);
             $this->tag->setDefault("ordpee", $peerpergunta->ordpee);
             $this->tag->setDefault("obrirespeer", $peerpergunta->obrirespeer);
-            
         }
     }
 
     /**
      * Creates a new peerpergunta
      */
-    public function createAction()
-    {
+    public function createAction() {
         $id_pergunta = null;
-        
+
         if (!$this->request->isPost()) {
             $this->dispatcher->forward(array(
                 'controller' => "peerperguntas",
@@ -107,76 +101,80 @@ class PeerperguntasController extends ControllerBase
             ));
             return;
         }
-        
-        if($this->request->isPost()){
+
+        if ($this->request->isPost()) {
             $pergunta = new Pergunta();
             
-            $pergunta->desper = $this->request->getPost("peerper");
-            $pergunta->rescer = 0; 
+           
             
+             $pergunta->codpee = $this->request->getPost("peer");
+            $pergunta->desper = $this->request->getPost("peerper");
+            $pergunta->rescer = 0;
+
             if (!$pergunta->save()) {
                 foreach ($pergunta->getMessages() as $message) {
                     $this->flash->error($message);
                 }
-            }else{
-               $id_pergunta = $pergunta->codper;
+            } else {
+                $id_pergunta = $pergunta->codper;
+            }
+
+            $opcao = new Opcao();
+            $opcao->desopc = $this->request->getPost("resposta1");
+            $opcao->perguntacodper = $id_pergunta;
+            $opcao->save();
+            if ($this->request->getPost("rescerta") == 1) {
+                $pergunta->rescer = $opcao->codopc;
+            }
+
+            $opcao = new Opcao();
+            $opcao->desopc = $this->request->getPost("resposta2");
+            $opcao->perguntacodper = $id_pergunta;
+            $opcao->save();
+            if ($this->request->getPost("rescerta") == 2) {
+                $pergunta->rescer = $opcao->codopc;
+            }
+            $opcao = new Opcao();
+            $opcao->desopc = $this->request->getPost("resposta3");
+            $opcao->perguntacodper = $id_pergunta;
+            $opcao->save();
+            if ($this->request->getPost("rescerta") == 3) {
+                $pergunta->rescer = $opcao->codopc;
+            }
+            $opcao = new Opcao();
+            $opcao->desopc = $this->request->getPost("resposta4");
+            $opcao->perguntacodper = $id_pergunta;
+            $opcao->save();
+            if ($this->request->getPost("rescerta") == 4) {
+                $pergunta->rescer = $opcao->codopc;
             }
             
-               $opcao = new Opcao();
-               $opcao->desopc = $this->request->getPost("resposta1");
-               $opcao->perguntacodper = $id_pergunta;
-               $opcao->save();
-               if ($this->request->getPost("rescerta") == 1) {
-                  $pergunta->rescer = $opcao->codopc; 
-               }
-               
-               $opcao = new Opcao();
-               $opcao->desopc = $this->request->getPost("resposta2");
-               $opcao->perguntacodper = $id_pergunta;
-               $opcao->save();
-                if ($this->request->getPost("rescerta") == 2) {
-                  $pergunta->rescer = $opcao->codopc; 
-               }
-               $opcao = new Opcao();
-               $opcao->desopc = $this->request->getPost("resposta3");
-               $opcao->perguntacodper = $id_pergunta;
-               $opcao->save();
-               if ($this->request->getPost("rescerta") == 3) {
-                  $pergunta->rescer = $opcao->codopc; 
-               }
-               $opcao = new Opcao();
-               $opcao->desopc = $this->request->getPost("resposta4");
-               $opcao->perguntacodper = $id_pergunta;
-               $opcao->save();
-                if ($this->request->getPost("rescerta") == 4) {
-                  $pergunta->rescer = $opcao->codopc; 
-               }
-               $pergunta->save();
-               /**
-               $respostas = array(
-                   array(
-                    'desopc' => $this->request->getPost("resposta1"),
-                    'perguntacodper' => $id_pergunta   
-                   ),
-                   array(
-                    'desopc' => $this->request->getPost("resposta2"),
-                    'perguntacodper' => $id_pergunta   
-                   ),
-                   array(
-                    'desopc' => $this->request->getPost("resposta3"),
-                    'perguntacodper' => $id_pergunta   
-                   ),
-                   array(
-                    'desopc' => $this->request->getPost("resposta4"),
-                    'perguntacodper' => $id_pergunta   
-                   )
-               );
-               $opcao->save($respostas, $opcao);
-               **/
-     
+            
+            $pergunta->save();
+            /**
+              $respostas = array(
+              array(
+              'desopc' => $this->request->getPost("resposta1"),
+              'perguntacodper' => $id_pergunta
+              ),
+              array(
+              'desopc' => $this->request->getPost("resposta2"),
+              'perguntacodper' => $id_pergunta
+              ),
+              array(
+              'desopc' => $this->request->getPost("resposta3"),
+              'perguntacodper' => $id_pergunta
+              ),
+              array(
+              'desopc' => $this->request->getPost("resposta4"),
+              'perguntacodper' => $id_pergunta
+              )
+              );
+              $opcao->save($respostas, $opcao);
+             * */
         }
 
-        $this->flash->success("peerpergunta was created successfully");
+        $this->flash->success("Perguntas criadas com sucesso!!");
 
         $this->dispatcher->forward(array(
             'controller' => "peerperguntas",
@@ -184,15 +182,12 @@ class PeerperguntasController extends ControllerBase
         ));
     }
 
-
-
     /**
      * Deletes a peerpergunta
      *
      * @param string $perguntacodper
      */
-    public function deleteAction($perguntacodper)
-    {
+    public function deleteAction($perguntacodper) {
         $peerpergunta = Peerperguntas::findFirstByperguntacodper($perguntacodper);
         if (!$peerpergunta) {
             $this->flash->error("peerpergunta was not found");

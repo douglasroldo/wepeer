@@ -8,22 +8,10 @@ class PeerAlunoController extends ControllerBase {
     /**
      * Index action
      */
-    public function indexAction($idpeer) {
+    public function indexAction() {
 
-        // $this->persistent->parameters = null;
-
-
-        $perguntas = Pergunta::find(["codpee = $idpeer", "order" => "codper"]);
-
-        $perguntasComOpcao = array();
-        foreach ($perguntas as $pergunta) {
-            $pergunta->opcoes = Opcao::find(["perguntacodper = $pergunta->codper", "order" => "codopc"]);
-            $perguntasComOpcao[] = $pergunta;
-        }
-
-        $this->view->setParamToView(["pergunta" => $perguntasComOpcao]);
     }
-    
+
     /**
      * Index action
      */
@@ -130,26 +118,31 @@ class PeerAlunoController extends ControllerBase {
             return;
         }
 
-        $peeraluno = new PeerAluno();
-        $peeraluno->peercodpee = $this->request->getPost("peercodpee");
-        $peeraluno->alunocod_matricula = $this->request->getPost("alunocod_matricula");
-        $peeraluno->datexecpeer = $this->request->getPost("datexecpeer");
+        $respostas = $this->request->getPost("per");
+        foreach ($respostas as $res) {
+            $auth = $this->session->get('auth');
+            $resposta = new Peerrespostas();
+            $resposta->alunocod_matricula = $auth["codpes"];
+            $resposta->opcaocodopc = $res;
+
+            // var_dump($resposta);
 
 
-        if (!$peeraluno->save()) {
-            foreach ($peeraluno->getMessages() as $message) {
-                $this->flash->error($message);
+            if (!$resposta->save()) {
+                foreach ($resposta->getMessages() as $message) {
+                    $this->flash->error($message);
+                }
+
+                $this->dispatcher->forward(array(
+                    'controller' => "peeraluno",
+                    'action' => 'new'
+                ));
+
+                return;
             }
-
-            $this->dispatcher->forward(array(
-                'controller' => "peeraluno",
-                'action' => 'new'
-            ));
-
-            return;
         }
 
-        $this->flash->success("peeraluno was created successfully");
+        $this->flash->success("Respostas salvas com sucesso!");
 
         $this->dispatcher->forward(array(
             'controller' => "peeraluno",

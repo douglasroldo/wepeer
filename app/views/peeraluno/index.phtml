@@ -19,20 +19,7 @@ echo $this->tag->form(
         )
 );
 
-foreach ($perguntas as $pergunta){
-          
-            echo  $pergunta->desper. "<br/>";
-            foreach ($pergunta->opcoes as $opcao){
-                            echo Phalcon\Tag::radioField(
-    [ "rescerta",
-        "value" => "codopc", 
-    ]);
-                 
-                echo $opcao->desopc . "<p/>";   
-           
-            }
-            echo "<hr/>";
-        }
+
 ?>
 <?php echo $this->tag->endForm(); ?>
 <div class="form-group">

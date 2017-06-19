@@ -61,6 +61,9 @@ class SecurityPlugin extends Plugin {
 					'peerrespostas' => array (
 							'index','search','new','edit','save','create','delete'
 					),
+                                        'peerrelatorios' => array (
+							'index','search','new','edit','save','create','delete'
+					),
 					'peerperguntas' => array (
 							'index','search','new','edit','save','create','delete'
 					),
